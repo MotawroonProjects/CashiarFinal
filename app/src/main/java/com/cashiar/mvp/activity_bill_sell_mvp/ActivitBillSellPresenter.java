@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.cashiar.R;
 import com.cashiar.models.AllCustomersModel;
+import com.cashiar.models.BillModel;
+import com.cashiar.models.BillModel;
 import com.cashiar.models.CreateOrderModel;
 import com.cashiar.models.PaymentModel;
 import com.cashiar.models.UserModel;
@@ -65,6 +67,46 @@ public class ActivitBillSellPresenter {
 
                     @Override
                     public void onFailure(Call<UserModel> call, Throwable t) {
+                        try {
+                            view.onFinishload();
+                            view.onFailed(context.getString(R.string.something));
+                            Log.e("Error", t.getMessage());
+                        } catch (Exception e) {
+
+                        }
+                    }
+                });
+    }
+    public void getBill(UserModel userModel,int bill_id)
+    {
+        // Log.e("tjtjtj",userModel.getIs_confirmed());
+        view.onLoad();
+
+        Api.getService(Tags.base_url)
+                .getBill("Bearer "+userModel.getToken(),bill_id)
+                .enqueue(new Callback<BillModel>() {
+                    @Override
+                    public void onResponse(Call<BillModel> call, Response<BillModel> response) {
+                        view.onFinishload();
+                        if (response.isSuccessful() && response.body() != null) {
+                            if (response.body() != null && response.body() != null) {
+
+                                view.onSuccess(response.body());}
+                        } else {
+                            view.onFinishload();
+                            view.onFailed(context.getString(R.string.something));
+                            try {
+                                Log.e("error_codess",response.code()+ response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<BillModel> call, Throwable t) {
                         try {
                             view.onFinishload();
                             view.onFailed(context.getString(R.string.something));

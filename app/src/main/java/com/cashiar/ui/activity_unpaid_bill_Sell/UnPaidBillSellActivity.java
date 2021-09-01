@@ -76,7 +76,8 @@ public class UnPaidBillSellActivity extends AppCompatActivity implements BillSel
     private String lang;
     private UserModel userModel;
     private ProgressDialog dialog;
-    private SalesBillReportsModel billModel;
+    private int bill_id;
+    private BillModel billModel;
     private double paid;
     private String taxamount = "0";
     private Preferences preferences;
@@ -103,6 +104,8 @@ public class UnPaidBillSellActivity extends AppCompatActivity implements BillSel
     private Thread workerThread;
     private AlertDialog dialog2;
     private double total;
+    private int type;
+    private String filePath;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -115,8 +118,7 @@ public class UnPaidBillSellActivity extends AppCompatActivity implements BillSel
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_unpaid_bill_sell);
         getdatafromintent();
-        checkWritePermission();
-        checkBluthoosPermission();
+
         initView();
 
     }
@@ -133,6 +135,12 @@ public class UnPaidBillSellActivity extends AppCompatActivity implements BillSel
 
         } else {
             isPermissionGranted = true;
+            try {
+                sendData(filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
@@ -148,6 +156,7 @@ public class UnPaidBillSellActivity extends AppCompatActivity implements BillSel
 
         } else {
             isPermissionGranted = true;
+            takeScreenshot(type);
         }
     }
 
@@ -157,13 +166,21 @@ public class UnPaidBillSellActivity extends AppCompatActivity implements BillSel
 
         if (requestCode == write_req && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             isPermissionGranted = true;
+            takeScreenshot(type);
+        } else if (requestCode == bluthoos_req && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            isPermissionGranted = true;
+            try {
+                sendData(filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     private void getdatafromintent() {
         Intent intent = getIntent();
         if (intent != null) {
-            billModel = (SalesBillReportsModel) intent.getSerializableExtra("databill");
+            bill_id = intent.getIntExtra("databill", 0);
             // taxamount=intent.getStringExtra("tax");
         }
     }
@@ -177,6 +194,7 @@ public class UnPaidBillSellActivity extends AppCompatActivity implements BillSel
         binding.setCurrency("");
         binding.setAddress("");
         binding.setTax("");
+        binding.tvCasher.setText(getString(R.string.casher) + "/" + userModel.getName());
         presenter = new ActivitBillSellPresenter(this, this);
         presenter.getprofile(userModel);
         binding.setBillmodel(billModel);
@@ -185,9 +203,7 @@ public class UnPaidBillSellActivity extends AppCompatActivity implements BillSel
         productsSellAdapter = new ProductUnpaidSellAdapter(this, itemCartModelList, currecny);
         binding.recView.setLayoutManager(new LinearLayoutManager(this));
         binding.recView.setAdapter(productsSellAdapter);
-        itemCartModelList.addAll(billModel.getSale_details());
 
-        productsSellAdapter.notifyDataSetChanged();
         calculateTotal();
         Paper.init(this);
         lang = Paper.book().read("lang", "ar");
@@ -201,16 +217,19 @@ public class UnPaidBillSellActivity extends AppCompatActivity implements BillSel
             @Override
             public void onClick(View view) {
                 //   takeScreenshot(2);
-                takeScreenshot(2);
+                type = 2;
+                checkWritePermission();
 
             }
         });
         binding.btnsend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                takeScreenshot(1);
+                type = 1;
+                checkWritePermission();
             }
         });
+        presenter.getBill(userModel, bill_id);
 
     }
 
@@ -280,6 +299,7 @@ public class UnPaidBillSellActivity extends AppCompatActivity implements BillSel
 
     }
 
+
     private void takeScreenshot(int mode) {
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
@@ -303,12 +323,13 @@ public class UnPaidBillSellActivity extends AppCompatActivity implements BillSel
             outputStream.close();
 
             //setting screenshot in imageview
-            String filePath = imageFile.getPath();
+            filePath = imageFile.getPath();
             Log.e("ddlldld", filePath);
             if (mode == 1) {
                 shareImage(new File(filePath));
             } else {
-                sendData(filePath);
+                checkBluthoosPermission();
+                // sendData(filePath);
                 //printPhoto(FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider",new File(filePath)));
             }
 //   Bitmap ssbitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
@@ -535,7 +556,17 @@ public class UnPaidBillSellActivity extends AppCompatActivity implements BillSel
         binding.setTotal(total + "");
         Log.e("Dldldl", taxamount);
         taxamount = ((Double.parseDouble(taxamount) * total) / 100) + "";
-        binding.setTax(Math.round(Double.parseDouble(taxamount))+"");
+        binding.setTax(Math.round(Double.parseDouble(taxamount)) + "");
 
+    }
+
+    @Override
+    public void onSuccess(BillModel body) {
+        this.billModel = body;
+        binding.setBillmodel(billModel);
+        itemCartModelList.addAll(billModel.getSale_details());
+
+        productsSellAdapter.notifyDataSetChanged();
+        calculateTotal();
     }
 }

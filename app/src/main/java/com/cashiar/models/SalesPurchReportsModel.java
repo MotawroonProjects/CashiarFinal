@@ -14,6 +14,7 @@ public class SalesPurchReportsModel implements Serializable {
     private OneSale one_sale;
     private OneProduct one_product;
     private OneSale one_purchase;
+    private OneProduct product;
 
     public int getId() {
         return id;
@@ -57,6 +58,10 @@ public class SalesPurchReportsModel implements Serializable {
 
     public OneSale getOne_purchase() {
         return one_purchase;
+    }
+
+    public OneProduct getProduct() {
+        return product;
     }
 
     public class OneSale implements Serializable {

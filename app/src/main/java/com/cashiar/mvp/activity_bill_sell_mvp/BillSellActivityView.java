@@ -1,6 +1,7 @@
 package com.cashiar.mvp.activity_bill_sell_mvp;
 
 import com.cashiar.models.AllCustomersModel;
+import com.cashiar.models.BillModel;
 import com.cashiar.models.UserModel;
 
 public interface BillSellActivityView {
@@ -13,4 +14,6 @@ public interface BillSellActivityView {
 void onsucess();
 
     void onprofileload(UserModel body);
+
+    void onSuccess(BillModel body);
 }

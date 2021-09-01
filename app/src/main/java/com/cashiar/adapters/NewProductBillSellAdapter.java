@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -46,28 +47,37 @@ public class NewProductBillSellAdapter extends RecyclerView.Adapter<NewProductBi
 holder.binding.tvamount.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        if(context instanceof NewBillOfSellActivity){
-            NewBillOfSellActivity newBillOfSellActivity=(NewBillOfSellActivity)context;
-            if (list.get(holder.getLayoutPosition()).getType().equals("weight")) {
-               // holder.binding.tvweight.setVisibility(View.VISIBLE);
-                newBillOfSellActivity.CreateDialogAlert(context,holder.getLayoutPosition());
-            }
-            else {
-            newBillOfSellActivity.increase(holder.getLayoutPosition());}
+        if(context instanceof NewBillOfSellActivity) {
+            NewBillOfSellActivity newBillOfSellActivity = (NewBillOfSellActivity) context;
+//            if (list.get(holder.getLayoutPosition()).getType().equals("weight")) {
+            // holder.binding.tvweight.setVisibility(View.VISIBLE);
+            if(list.get(holder.getLayoutPosition()).getStock()>0) {
+
+                newBillOfSellActivity.CreateDialogAlert(context, holder.getLayoutPosition(),list.get(holder.getLayoutPosition()).getType(),list.get(holder.getLayoutPosition()).getStock());
+        }
+        else{
+            Toast.makeText(context, context.getResources().getString(R.string.out_of_stock),Toast.LENGTH_LONG).show();
+        }
+
+//            }
+//            else {
+//            newBillOfSellActivity.increase(holder.getLayoutPosition());}
+//        }
         }
         else    if(context instanceof NewBillOfPurchasesActivity) {
             NewBillOfPurchasesActivity newBillOfPurchasesActivity = (NewBillOfPurchasesActivity) context;
-            if (list.get(holder.getLayoutPosition()).getType().equals("weight")) {
+//            if (list.get(holder.getLayoutPosition()).getType().equals("weight")) {
                 // holder.binding.tvweight.setVisibility(View.VISIBLE);
-                newBillOfPurchasesActivity.CreateDialogAlert(context, holder.getLayoutPosition());
-            } else {
-                newBillOfPurchasesActivity.increase(holder.getLayoutPosition());
-            }
+                newBillOfPurchasesActivity.CreateDialogAlert(context, holder.getLayoutPosition(),list.get(holder.getLayoutPosition()).getType());
+//            } else {
+//                newBillOfPurchasesActivity.increase(holder.getLayoutPosition());
+//            }
         }
     }
 
 
 });
+
     }
 
     @Override

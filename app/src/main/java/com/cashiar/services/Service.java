@@ -821,4 +821,11 @@ public interface Service {
             @Field("package_id") int package_id
 
     );
+    @FormUrlEncoded
+    @POST("api/singleSaleOrder")
+    Call<BillModel> getBill(
+            @Header("Authorization") String Authorization,
+            @Field("sale_id") int sale_id
+
+    );
 }

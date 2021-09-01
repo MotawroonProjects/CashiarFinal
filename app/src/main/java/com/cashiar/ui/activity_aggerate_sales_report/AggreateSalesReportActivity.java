@@ -27,6 +27,7 @@ import com.cashiar.mvp.activity_aggreate_sales_report_mvp.ActivityAggreateSalesR
 import com.cashiar.mvp.activity_aggreate_sales_report_mvp.AggreateSalesReportActivityView;
 import com.cashiar.preferences.Preferences;
 import com.cashiar.share.Common;
+import com.cashiar.ui.activity_unpaid_bill_Sell.UnPaidBillSellActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -398,4 +399,12 @@ public class AggreateSalesReportActivity extends AppCompatActivity implements Ag
 
     }
 
+    public void show(SalesPurchReportsModel salesPurchReportsModel) {
+        Intent intent = new Intent(this, UnPaidBillSellActivity.class);
+        intent.putExtra("databill", salesPurchReportsModel.getSale_id());
+        //  intent.putExtra("tax",taxamount);
+
+        startActivity(intent);
+        finish();
+    }
 }

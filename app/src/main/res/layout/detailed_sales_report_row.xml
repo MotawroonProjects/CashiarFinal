@@ -31,50 +31,50 @@
         android:layout_marginBottom="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_3sdp"
         >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <TextView
-        
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:text="@{model.one_product.title}"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_10sdp"
-android:layout_weight="1"
-        />
-    <TextView
-        
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:text='@{model.amount+""}'
-        android:textColor="@color/black"
-        android:textSize="@dimen/_10sdp"
-        android:layout_weight="1"
-        android:gravity="center"
-        />
-    <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
 
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:text='@{model.price_value+""}'
-        android:textColor="@color/black"
-        android:textSize="@dimen/_10sdp"
-        android:layout_weight="1"
-        android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:text="@{model.one_product.title}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:layout_weight="1"
+                />
+            <TextView
 
-        />
-</LinearLayout>
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:text='@{model.amount+""}'
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:gravity="center"
+                />
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:text='@{model.price_value+""}'
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,27 +91,27 @@ android:layout_weight="1"
                 android:textSize="@dimen/_10sdp"
                 android:layout_weight="1"
                 />
-    <FrameLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        >
-            <TextView
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                >
+                <TextView
 
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:text='@{(model.price_value*model.amount)+""}'
-                android:textColor="@color/bpRed"
-                android:textSize="@dimen/_10sdp"
-                android:gravity="center"
-                android:padding="3dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:text='@{(model.price_value*model.amount)+""}'
+                    android:textColor="@color/bpRed"
+                    android:textSize="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:padding="3dp"
 
-                android:layout_gravity="center"
-                android:background="@drawable/rounded_red"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_red"
 
-                /></FrameLayout>
+                    /></FrameLayout>
         </LinearLayout>
 
         <TextView
@@ -126,12 +126,12 @@ android:layout_weight="1"
             android:textSize="@dimen/_10sdp"
             />
 
-<View
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/_1sdp"
-    android:background="@color/depic"
-    android:layout_marginTop="@dimen/_3sdp"
-    />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/depic"
+            android:layout_marginTop="@dimen/_3sdp"
+            />
     </LinearLayout>
 
 </layout>

@@ -2,6 +2,7 @@ package com.cashiar.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cashiar.R;
 import com.cashiar.databinding.ProductSoldCustomerReportRowBinding;
 import com.cashiar.models.SalesPurchReportsModel;
+import com.cashiar.ui.activity_product_sold_customer_report.ProductSoldCustomerReportActivity;
 
 import java.util.List;
 
@@ -35,7 +37,15 @@ public class ProductSoldCustomerReportAdapter extends RecyclerView.Adapter<Produ
     @Override
     public void onBindViewHolder(@NonNull ProductSoldCustomerReportedViewholder holder, int position) {
         holder.binding.setModel(list.get(position));
-
+holder.itemView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        if(context instanceof ProductSoldCustomerReportActivity){
+            ProductSoldCustomerReportActivity activity=(ProductSoldCustomerReportActivity) context;
+            activity.show(list.get(holder.getLayoutPosition()));
+        }
+    }
+});
     }
 
     @Override

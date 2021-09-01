@@ -27,6 +27,7 @@ import com.cashiar.mvp.activity_detialed_sales_report_mvp.ActivityDetailedSalesR
 import com.cashiar.mvp.activity_detialed_sales_report_mvp.DetailedSalesReportActivityView;
 import com.cashiar.preferences.Preferences;
 import com.cashiar.share.Common;
+import com.cashiar.ui.activity_unpaid_bill_Sell.UnPaidBillSellActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class DetailedSalesReportActivity extends AppCompatActivity implements De
     private ActivityDetailedSalesReportPresenter presenter;
     private String lang;
 
-    private String query="all";
+    private String query = "all";
     private Preferences preferences;
     private UserModel userModel;
     private DetialedSalesReportAdapter detialedSalesReportAdapter;
@@ -52,6 +53,7 @@ public class DetailedSalesReportActivity extends AppCompatActivity implements De
     private int pos;
     private String type;
     private String type1, type2;
+
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
@@ -65,6 +67,7 @@ public class DetailedSalesReportActivity extends AppCompatActivity implements De
         getDataFromIntent();
         initView();
     }
+
     private void getDataFromIntent() {
         Intent intent = getIntent();
         if (intent != null) {
@@ -119,11 +122,11 @@ public class DetailedSalesReportActivity extends AppCompatActivity implements De
                 Log.e("ldlldl", str + " " + end);
 
                 if (pos == 0) {
-                    type1 =getResources().getString(R.string.day);
+                    type1 = getResources().getString(R.string.day);
                 } else {
                     type2 = getResources().getString(R.string.day);
                 }
-                presenter.getreports(userModel,query,str,end);
+                presenter.getreports(userModel, query, str, end);
 
             }
         });
@@ -146,7 +149,7 @@ public class DetailedSalesReportActivity extends AppCompatActivity implements De
                 } else {
                     type2 = getResources().getString(R.string.this_month);
                 }
-                presenter.getreports(userModel,query,str,end);
+                presenter.getreports(userModel, query, str, end);
 
             }
         });
@@ -169,7 +172,7 @@ public class DetailedSalesReportActivity extends AppCompatActivity implements De
                 } else {
                     type2 = getResources().getString(R.string.last_seven_day);
                 }
-                presenter.getreports(userModel,query,str,end);
+                presenter.getreports(userModel, query, str, end);
 
             }
         });
@@ -186,7 +189,7 @@ public class DetailedSalesReportActivity extends AppCompatActivity implements De
                 } else {
                     type2 = getResources().getString(R.string.extent_of_work);
                 }
-                presenter.getreports(userModel,query,str,end);
+                presenter.getreports(userModel, query, str, end);
 
             }
         });
@@ -208,7 +211,7 @@ public class DetailedSalesReportActivity extends AppCompatActivity implements De
                 } else {
                     type2 = getResources().getString(R.string.last_month);
                 }
-                presenter.getreports(userModel,query,str,end);
+                presenter.getreports(userModel, query, str, end);
 
             }
         });
@@ -231,7 +234,7 @@ public class DetailedSalesReportActivity extends AppCompatActivity implements De
                 } else {
                     type2 = getResources().getString(R.string.last_thirty_day);
                 }
-                presenter.getreports(userModel,query,str,end);
+                presenter.getreports(userModel, query, str, end);
 
 
             }
@@ -255,7 +258,7 @@ public class DetailedSalesReportActivity extends AppCompatActivity implements De
                 } else {
                     type2 = getResources().getString(R.string.yesterday);
                 }
-                presenter.getreports(userModel,query,str,end);
+                presenter.getreports(userModel, query, str, end);
 
 
             }
@@ -266,7 +269,7 @@ public class DetailedSalesReportActivity extends AppCompatActivity implements De
                 binding.tv.setText(getResources().getString(R.string.custom_history));
                 closeSheet();
                 type = "custom";
-                presenter.show(getFragmentManager(),1);
+                presenter.show(getFragmentManager(), 1);
 
                 if (pos == 0) {
                     type1 = getResources().getString(R.string.custom_history);
@@ -326,6 +329,7 @@ public class DetailedSalesReportActivity extends AppCompatActivity implements De
         binding.progBar.setVisibility(View.GONE);
 
     }
+
     private void openSheet() {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_up);
 
@@ -384,18 +388,27 @@ public class DetailedSalesReportActivity extends AppCompatActivity implements De
         });
 
     }
+
     @Override
     public void onDateSelected(String date, int type) {
-        if(type==1){
-            str=date;
-            presenter.show(getFragmentManager(),2);
-        }
-        else {
-            end=date;
-            presenter.getreports(userModel,query,str,end);
+        if (type == 1) {
+            str = date;
+            presenter.show(getFragmentManager(), 2);
+        } else {
+            end = date;
+            presenter.getreports(userModel, query, str, end);
 
         }
 
     }
 
+    public void show(SalesPurchReportsModel salesPurchReportsModel) {
+        Intent intent = new Intent(this, UnPaidBillSellActivity.class);
+        intent.putExtra("databill", salesPurchReportsModel.getSale_id());
+        //  intent.putExtra("tax",taxamount);
+
+        startActivity(intent);
+        finish();
+
+    }
 }

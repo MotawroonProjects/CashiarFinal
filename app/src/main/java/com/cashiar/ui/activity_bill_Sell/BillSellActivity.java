@@ -101,10 +101,11 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
     private double paid;
     private String taxamount = "0";
     private Preferences preferences;
-    private static final int D80MMWIDTH = 576;
     private List<ItemCartModel> itemCartModelList;
     private ProductsSellAdapter productsSellAdapter;
     private String currecny = "";
+    private static final int D80MMWIDTH = 576;
+
     private final String write_perm = Manifest.permission.WRITE_EXTERNAL_STORAGE;
     private final int write_req = 100;
     private final String bluthoos_perm = Manifest.permission.BLUETOOTH;
@@ -123,6 +124,8 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
     private int readBufferPosition;
     private Thread workerThread;
     private AlertDialog dialog2;
+    private int type;
+    private String filePath;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -135,8 +138,7 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_bill_sell);
         getdatafromintent();
-        checkWritePermission();
-        checkBluthoosPermission();
+
         initView();
 
     }
@@ -153,6 +155,12 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
 
         } else {
             isPermissionGranted = true;
+            try {
+                sendData(filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
@@ -168,6 +176,7 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
 
         } else {
             isPermissionGranted = true;
+            takeScreenshot(type);
         }
     }
 
@@ -177,6 +186,14 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
 
         if (requestCode == write_req && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             isPermissionGranted = true;
+            takeScreenshot(type);
+        } else if (requestCode == bluthoos_req && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            isPermissionGranted = true;
+            try {
+                sendData(filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -185,7 +202,7 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
         if (intent != null) {
             createOrderModel = (CreateOrderModel) intent.getSerializableExtra("data");
             billModel = (BillModel) intent.getSerializableExtra("databill");
-            taxamount=intent.getStringExtra("tax");
+            taxamount = intent.getStringExtra("tax");
         }
     }
 
@@ -204,7 +221,7 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
         presenter.getprofile(userModel);
         binding.setBillmodel(billModel);
 
-        binding.tvCasher.setText(  getString(R.string.casher)+"/"+userModel.getName());
+        binding.tvCasher.setText(getString(R.string.casher) + "/" + userModel.getName());
 
         binding.setTotal(Math.round((createOrderModel.getTotal_price() - Double.parseDouble(taxamount) + createOrderModel.getDiscount_value())) + "");
         productsSellAdapter = new ProductsSellAdapter(this, itemCartModelList, currecny);
@@ -219,19 +236,23 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
             finish();
         });
 
-
+        presenter.getBill(userModel, billModel.getId());
         binding.btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //   takeScreenshot(2);
-                takeScreenshot(2);
+                type = 2;
+                checkWritePermission();
+
+                //takeScreenshot(2);
 
             }
         });
         binding.btnsend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                takeScreenshot(1);
+                type = 1;
+                checkWritePermission();
             }
         });
 
@@ -289,12 +310,12 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
 
     @Override
     public void onprofileload(UserModel body) {
-      //  this.taxamount = body.getTax_amount();
+        //  this.taxamount = body.getTax_amount();
         currecny = body.getCurrency();
         binding.setCurrency(currecny);
         binding.setAddress(body.getAddress());
         binding.setTax(taxamount);
-   //     binding.setTotal((Math.round((createOrderModel.getTotal_price() - Double.parseDouble(taxamount) + createOrderModel.getDiscount_value()))) + "");
+        //     binding.setTotal((Math.round((createOrderModel.getTotal_price() - Double.parseDouble(taxamount) + createOrderModel.getDiscount_value()))) + "");
         if (body.getLogo() != null) {
             binding.setLogo(body.getLogo());
         }
@@ -302,7 +323,21 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
 
     }
 
+    @Override
+    public void onSuccess(BillModel body) {
+        this.billModel = body;
+        binding.setBillmodel(billModel);
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        presenter.getprofile(userModel);
+    }
+
     private void takeScreenshot(int mode) {
+
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
 
@@ -325,12 +360,12 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
             outputStream.close();
 
             //setting screenshot in imageview
-            String filePath = imageFile.getPath();
+            filePath = imageFile.getPath();
             Log.e("ddlldld", filePath);
             if (mode == 1) {
                 shareImage(new File(filePath));
             } else {
-                sendData(filePath);
+                checkBluthoosPermission();
                 //printPhoto(FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider",new File(filePath)));
             }
 //   Bitmap ssbitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
@@ -353,11 +388,6 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
         return bitmap;
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        presenter.getprofile(userModel);
-    }
 
     private void shareImage(File file) {
         Uri uri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", file);
@@ -453,11 +483,11 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
         imageBit.compress(Bitmap.CompressFormat.PNG, 0, blob);
 
         byte[] bitmapdata = blob.toByteArray();
-       // byte[] command = Utils.decodeBitmap(imageBit);
-      // bitmapdata= ESCUtil.selectBitmap(imageBit,4);
+        // byte[] command = Utils.decodeBitmap(imageBit);
+        // bitmapdata= ESCUtil.selectBitmap(imageBit,4);
         bitmapdata = PrintPicture.POS_PrintBMP(imageBit, 400, 4);
-      //  mmDevice.write(sendData);
-      //  binding.image.setImageBitmap(imageBit);
+        //  mmDevice.write(sendData);
+        //  binding.image.setImageBitmap(imageBit);
 
 
         mmOutputStream.write(bitmapdata);
@@ -533,6 +563,7 @@ public class BillSellActivity extends AppCompatActivity implements BillSellActiv
         }
 
     }
+
     void closeBT() throws IOException {
         try {
             stopWorker = true;

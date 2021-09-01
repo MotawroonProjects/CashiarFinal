@@ -12,12 +12,16 @@
             name="logo"
             type="String" />
 
+        <import type="android.view.View" />
+
         <variable
             name="billmodel"
-            type="com.cashiar.models.SalesBillReportsModel" />
-<variable
-    name="total"
-    type="String" />
+            type="com.cashiar.models.BillModel" />
+
+        <variable
+            name="total"
+            type="String" />
+
         <variable
             name="tax"
             type="String" />
@@ -29,8 +33,6 @@
         <variable
             name="address"
             type="String" />
-
-
 
 
     </data>
@@ -95,10 +97,10 @@
                 android:id="@+id/scrollView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/ll"
                 android:background="@color/gray3"
-                android:fillViewport="true">
+                android:fillViewport="true"
+                app:layout_constraintBottom_toTopOf="@+id/ll"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -126,14 +128,66 @@
                         android:textColor="@color/deptext"
                         android:textSize="@dimen/_13sdp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="@dimen/_8sdp"
-                        android:text='@{@string/customer+"/"+billmodel.one_client.name}'
-                        android:textColor="@color/deptext"
-                        android:textSize="@dimen/_13sdp" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/_8sdp"
+                            android:text='@{@string/customer+"/"+billmodel.client.name}'
+
+                            android:textColor="@color/deptext"
+                            android:textSize="@dimen/_13sdp"
+                            android:visibility='@{billmodel.client==null?View.GONE:View.VISIBLE,default=gone}' />
+
+                        <TextView
+                            android:id="@+id/tvCasher"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/_8sdp"
+
+                            android:textColor="@color/deptext"
+                            android:textSize="@dimen/_13sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+
+                        android:visibility='@{billmodel.client==null?View.GONE:View.VISIBLE,default=gone}'>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/_8sdp"
+                            android:text='@{@string/phone+"/"+billmodel.client.phone}'
+                            android:textColor="@color/deptext"
+                            android:textSize="@dimen/_13sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+
+                        android:visibility='@{billmodel.client==null?View.GONE:View.VISIBLE,default=gone}'>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/_8sdp"
+                            android:text='@{@string/address+"/"+billmodel.client.address}'
+                            android:textColor="@color/deptext"
+                            android:textSize="@dimen/_13sdp" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -482,9 +536,8 @@
                 android:id="@+id/ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="@dimen/_10sdp"
-                >
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <Button
                     android:id="@+id/btnConfirm"

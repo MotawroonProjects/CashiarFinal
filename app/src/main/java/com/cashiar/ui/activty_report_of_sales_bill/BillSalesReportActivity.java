@@ -28,6 +28,7 @@ import com.cashiar.mvp.activty_bill_sales_report_mvp.ActivitySalesBillReportPres
 import com.cashiar.mvp.activty_bill_sales_report_mvp.SalesBillReportActivityView;
 import com.cashiar.preferences.Preferences;
 import com.cashiar.share.Common;
+import com.cashiar.ui.activity_unpaid_bill_Sell.UnPaidBillSellActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -399,4 +400,12 @@ public class BillSalesReportActivity extends AppCompatActivity implements SalesB
 
     }
 
+    public void show(SalesBillReportsModel salesBillReportsModel) {
+        Intent intent = new Intent(this, UnPaidBillSellActivity.class);
+        intent.putExtra("databill", salesBillReportsModel.getId());
+        //  intent.putExtra("tax",taxamount);
+
+        startActivity(intent);
+        finish();
+    }
 }

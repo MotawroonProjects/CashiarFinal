@@ -413,7 +413,7 @@ public class UnpaidSalesInvoicesReportActivity extends AppCompatActivity impleme
     @Override
     public void onSuccess(UnpaidBillSaleReportModel body) {
         Intent intent = new Intent(this, UnPaidBillSellActivity.class);
-        intent.putExtra("databill", body.getData());
+        intent.putExtra("databill", body.getData().getId());
         //  intent.putExtra("tax",taxamount);
 
         startActivity(intent);

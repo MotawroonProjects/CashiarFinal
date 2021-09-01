@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_weight="1"
-            android:text="@{model.one_product.title}"
+            android:text="@{model.product.title}"
             android:textColor="@color/deptext"
             android:textSize="@dimen/_13sdp" />
         <TextView

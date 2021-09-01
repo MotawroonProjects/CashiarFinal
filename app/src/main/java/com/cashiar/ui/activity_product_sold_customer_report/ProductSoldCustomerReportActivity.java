@@ -31,6 +31,7 @@ import com.cashiar.mvp.activity_product_sold_customer_report_mvp.ActivityProduct
 import com.cashiar.mvp.activity_product_sold_customer_report_mvp.ProductSoldCustomerReportActivityView;
 import com.cashiar.preferences.Preferences;
 import com.cashiar.share.Common;
+import com.cashiar.ui.activity_unpaid_bill_Sell.UnPaidBillSellActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -405,4 +406,12 @@ public class ProductSoldCustomerReportActivity extends AppCompatActivity impleme
 
     }
 
+    public void show(SalesPurchReportsModel salesPurchReportsModel) {
+        Intent intent = new Intent(this, UnPaidBillSellActivity.class);
+        intent.putExtra("databill",salesPurchReportsModel.getSale_id());
+        //  intent.putExtra("tax",taxamount);
+
+        startActivity(intent);
+        finish();
+    }
 }

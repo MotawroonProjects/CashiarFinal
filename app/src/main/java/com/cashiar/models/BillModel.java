@@ -1,6 +1,7 @@
 package com.cashiar.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class BillModel implements Serializable {
     private String sale_type;
@@ -18,6 +19,9 @@ public class BillModel implements Serializable {
     private String updated_at;
     private String created_at;
     private int id;
+    private SingleCustomerSuplliersModel trader;
+    private SingleCustomerSuplliersModel client;
+    private List<SalesPurchReportsModel> sale_details;
 
     public String getSale_type() {
         return sale_type;
@@ -77,5 +81,17 @@ public class BillModel implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public SingleCustomerSuplliersModel getTrader() {
+        return trader;
+    }
+
+    public SingleCustomerSuplliersModel getClient() {
+        return client;
+    }
+
+    public List<SalesPurchReportsModel> getSale_details() {
+        return sale_details;
     }
 }

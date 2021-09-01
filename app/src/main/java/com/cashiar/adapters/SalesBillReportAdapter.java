@@ -2,6 +2,7 @@ package com.cashiar.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import com.cashiar.R;
 import com.cashiar.databinding.SalesBillReportRowBinding;
 import com.cashiar.databinding.UnpaidSalesInvoicesReportRowBinding;
 import com.cashiar.models.SalesBillReportsModel;
+import com.cashiar.ui.activty_report_of_sales_bill.BillSalesReportActivity;
 
 import java.util.List;
 
@@ -36,6 +38,14 @@ public class SalesBillReportAdapter extends RecyclerView.Adapter<SalesBillReport
     @Override
     public void onBindViewHolder(@NonNull SalesBillReportedViewholder holder, int position) {
         holder.binding.setModel(list.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(context instanceof BillSalesReportActivity){
+                    BillSalesReportActivity activity=(BillSalesReportActivity) context;
+                activity.show(list.get(holder.getLayoutPosition()));}
+            }
+        });
 
     }
 

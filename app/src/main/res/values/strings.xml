@@ -244,4 +244,5 @@
     <string name="eror">Error in Payment Step</string>
     <string name="package_is_free">Package Is Free And User Finished Date Had Updated</string>
     <string name="suce_packge">success package updating</string>
+    <string name="out_of_stock">This Product is Empty</string>
 </resources>

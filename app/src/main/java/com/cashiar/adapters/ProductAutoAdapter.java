@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -58,11 +59,16 @@ public class ProductAutoAdapter extends ArrayAdapter<SingleProductModel> {
                 @Override
                 public void onClick(View v) {
                     if(mContext instanceof NewBillOfSellActivity){
-                        NewBillOfSellActivity newBillOfSellActivity=(NewBillOfSellActivity) mContext;
-                        newBillOfSellActivity.additem(singleProductModelList.get(position));
-
+                        if(singleProductModel.getStock_amount()>0) {
+                            NewBillOfSellActivity newBillOfSellActivity = (NewBillOfSellActivity) mContext;
+                            newBillOfSellActivity.additem(singleProductModelList.get(position));
+                        }
+                        else{
+                            Toast.makeText(mContext, mContext.getResources().getString(R.string.out_of_stock),Toast.LENGTH_LONG).show();
+                        }
                     }
                    else if(mContext instanceof NewBillOfPurchasesActivity){
+
                         NewBillOfPurchasesActivity newBillOfPurchasesActivity=(NewBillOfPurchasesActivity) mContext;
                         newBillOfPurchasesActivity.additem(singleProductModelList.get(position));
 

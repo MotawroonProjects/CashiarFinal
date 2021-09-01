@@ -1,5 +1,6 @@
 package com.cashiar.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,7 @@ public class BillSellAdapter extends RecyclerView.Adapter<BillSellAdapter.Produc
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductsViewholder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductsViewholder holder, @SuppressLint("RecyclerView") int position) {
         holder.binding.setCurrency(currency);
         holder.binding.setModel(list.get(position));
 

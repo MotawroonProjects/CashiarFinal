@@ -405,12 +405,14 @@ public class NewBillOfPurchasesActivity extends AppCompatActivity implements New
         newProductBillSellAdapter.notifyDataSetChanged();
     }
 
-    public void CreateDialogAlert(Context context, int pos) {
+    public void CreateDialogAlert(Context context, int pos,String type) {
         final AlertDialog dialog = new AlertDialog.Builder(context)
                 .create();
 
         DialogInpiutBinding dialogInpiutBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_inpiut, null, false);
-
+        if (!type.equals("weight")) {
+            dialogInpiutBinding.edtwieght.setHint(getResources().getString(R.string.amount));
+        }
 
         dialogInpiutBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
                                                  @Override

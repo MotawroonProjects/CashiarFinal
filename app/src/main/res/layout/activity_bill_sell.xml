@@ -11,7 +11,7 @@
         <variable
             name="logo"
             type="String" />
-
+<import type="android.view.View"/>
         <variable
             name="billmodel"
             type="com.cashiar.models.BillModel" />
@@ -127,31 +127,64 @@
                         android:text='@{@string/invoice_number+"/"+billmodel.id}'
                         android:textColor="@color/deptext"
                         android:textSize="@dimen/_13sdp" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <TextView
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/_8sdp"
-        android:text='@{@string/customer+"/"+model.name}'
-        android:textColor="@color/deptext"
-        android:textSize="@dimen/_13sdp" />
-    <TextView
-        android:id="@+id/tvCasher"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/_8sdp"
-        android:textColor="@color/deptext"
-        android:textSize="@dimen/_13sdp" />
-</LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_8sdp"
+                            android:visibility='@{billmodel.client==null?View.GONE:View.VISIBLE,default=gone}'
 
+                            android:text='@{@string/customer+"/"+billmodel.client.name}'
+                            android:textColor="@color/deptext"
+                            android:textSize="@dimen/_13sdp" />
+                        <TextView
+                            android:id="@+id/tvCasher"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_8sdp"
 
+                            android:textColor="@color/deptext"
+                            android:textSize="@dimen/_13sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility='@{billmodel.client==null?View.GONE:View.VISIBLE,default=gone}'
+
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+
+                            android:padding="@dimen/_8sdp"
+                            android:text='@{@string/phone+"/"+billmodel.client.phone}'
+                            android:textColor="@color/deptext"
+                            android:textSize="@dimen/_13sdp"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility='@{billmodel.client==null?View.GONE:View.VISIBLE,default=gone}'
+
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_8sdp"
+                            android:text='@{@string/address+"/"+billmodel.client.address}'
+                            android:textColor="@color/deptext"
+                            android:textSize="@dimen/_13sdp" />
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">

@@ -431,23 +431,29 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
         newProductBillSellAdapter.notifyDataSetChanged();
     }
 
-    public void CreateDialogAlert(Context context, int pos) {
+    public void CreateDialogAlert(Context context, int pos, String type, double stock) {
         final AlertDialog dialog = new AlertDialog.Builder(context)
                 .create();
 
         DialogInpiutBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_inpiut, null, false);
-
+        if(!type.equals("weight")){
+            binding.edtwieght.setHint(getResources().getString(R.string.amount));
+        }
 
         binding.btnCancel.setOnClickListener(new View.OnClickListener() {
                                                  @Override
                                                  public void onClick(View v) {
                                                      String amount = binding.edtwieght.getText().toString();
                                                      if (!amount.isEmpty()) {
+                                                         if(Double.parseDouble(amount)+singleProductModelList.get(pos).getAmount()<stock){
                                                          dialog.dismiss();
                                                          singleProductModelList.get(pos).setAmount2(Double.parseDouble(amount));
                                                          singleProductModelList.get(pos).setAmount(Double.parseDouble(amount) + singleProductModelList.get(pos).getAmount());
                                                          newProductBillSellAdapter.notifyItemChanged(pos);
-                                                         calculateTotal();
+                                                         calculateTotal();}
+                                                         else{
+                                                             Toast.makeText(NewBillOfSellActivity.this, getResources().getString(R.string.out_of_stock),Toast.LENGTH_LONG).show();
+                                                         }
                                                      } else {
                                                          binding.edtwieght.setError(context.getResources().getString(R.string.field_required));
                                                      }
