@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="lang"
+            type="String" />
+
+        <variable
+            name="currency"
+            type="String" />
+
+        <variable
+            name="model"
+            type="com.cashiar.models.SalesPurchReportsModel" />
+
+        <variable
+            name="con"
+            type="Integer" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:text="@{model.one_product.title}"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+android:layout_weight="1"
+        />
+    <TextView
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:layout_weight="1"
+        android:gravity="center"
+        />
+    <TextView
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:text='@{model.amount+""}'
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:layout_weight="1"
+        android:gravity="center"
+
+        />
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:text='@{@string/bill_num+model.sale_id}'
+                android:textColor="@color/deptext"
+                android:textSize="@dimen/_10sdp"
+                android:layout_weight="1"
+                />
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:text='@{(model.price_value*model.amount)+""}'
+                android:textColor="@color/bpRed"
+                android:textSize="@dimen/_10sdp"
+                android:gravity="center"
+                android:padding="3dp"
+
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_red"
+
+                tools:ignore="RtlCompat" /></FrameLayout>
+        </LinearLayout>
+
+
+
+<View
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_1sdp"
+    android:background="@color/depic"
+    android:layout_marginTop="@dimen/_3sdp"
+    />
+    </LinearLayout>
+
+</layout>

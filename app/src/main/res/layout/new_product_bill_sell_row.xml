@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="lang"
+            type="String" />
+
+        <variable
+            name="currency"
+            type="String" />
+
+        <variable
+            name="model"
+            type="com.cashiar.models.ItemCartModel" />
+
+        <variable
+            name="con"
+            type="Integer" />
+
+    </data>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_40sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/llLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_remove"
+                    android:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:text="@string/delete"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llRight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_remove"
+                    android:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:text="@string/delete"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consForeground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:layout_marginTop="@dimen/_1sdp"
+        >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:text="@{model.title}"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+android:layout_weight="1"
+        />
+    <TextView
+        android:id="@+id/tvamount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:text='@{model.amount+""}'
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:layout_weight="1"
+        android:gravity="center"
+        />
+    <TextView
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:text='@{model.price_value+currency+""}'
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:layout_weight="1"
+        android:gravity="center"
+
+        />
+</LinearLayout>
+
+
+<View
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_1sdp"
+    android:background="@color/gray2"
+    android:layout_marginTop="@dimen/_3sdp"
+    />
+    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
+</layout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="lang"
+            type="String" />
+
+        <variable
+            name="currency"
+            type="String" />
+
+        <variable
+            name="model"
+            type="com.cashiar.models.SalesPurchReportsModel" />
+
+        <variable
+            name="con"
+            type="Integer" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_weight="2"
+                android:text="@{model.one_purchase.date}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp" />
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text='@{model.price_value+""}'
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+
+                />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:background="@color/depic" />
+    </LinearLayout>
+
+</layout>
