@@ -6,20 +6,26 @@
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_a_new_bill_of_purchases.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_a_new_bill_of_sale.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_aggerate_expense_report.xml" value="0.13385416666666666" />
+        <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_aggreate_earnings_report.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_aggreate_purchases_report.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_all_bill_sell.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_bill_sell.xml" value="0.21" />
+        <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_detailed_earnings_report.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_detailed_expense_report.xml" value="0.13385416666666666" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_detailed_purchases_report.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_inventory_change_purchase_price_for_an_item_report.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_payment_sell.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_products.xml" value="0.26510416666666664" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_products_buy.xml" value="0.26510416666666664" />
+        <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_products_purchases_from_supplier_report.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_products_sell.xml" value="0.26510416666666664" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_products_sold_to_customer_report.xml" value="0.13385416666666666" />
+        <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_report_of_amount_left_over_for_customers.xml" value="0.1375" />
+        <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_report_of_amount_left_over_for_supllier.xml" value="0.26510416666666664" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_report_of_purchases_bill.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_report_of_sales_bill.xml" value="0.25" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_report_of_unpaid_purchases_invoices.xml" value="0.1375" />
+        <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_supplier_bill.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_unpaid_bill_sell.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/aggreate_sales_purchases_report_row.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/cart_row.xml" value="0.26510416666666664" />

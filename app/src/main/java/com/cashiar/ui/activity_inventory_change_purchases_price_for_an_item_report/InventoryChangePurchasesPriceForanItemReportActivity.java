@@ -299,7 +299,7 @@ public class InventoryChangePurchasesPriceForanItemReportActivity extends AppCom
 
     public void openBT(BluetoothDevice bluetoothDevice) throws IOException {
         try {
-            dialog2.dismiss();
+            dialog3.dismiss();
 
             mmDevice = bluetoothDevice;
             // Standard SerialPortService ID

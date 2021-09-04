@@ -297,7 +297,7 @@ public class DetailedPurchasesReportActivity extends AppCompatActivity implement
 
     public void openBT(BluetoothDevice bluetoothDevice) throws IOException {
         try {
-            dialog2.dismiss();
+            dialog3.dismiss();
 
             mmDevice = bluetoothDevice;
             // Standard SerialPortService ID

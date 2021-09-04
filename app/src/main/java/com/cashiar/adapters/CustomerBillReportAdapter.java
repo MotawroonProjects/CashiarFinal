@@ -44,6 +44,7 @@ holder.itemView.setOnClickListener(new View.OnClickListener() {
             BillCustomerReportActivity activity=(BillCustomerReportActivity) context;
             activity.show(list.get(holder.getLayoutPosition()));
         }
+
     }
 });
     }

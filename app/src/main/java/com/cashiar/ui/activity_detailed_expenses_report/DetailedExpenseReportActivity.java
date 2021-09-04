@@ -92,9 +92,9 @@ public class DetailedExpenseReportActivity extends AppCompatActivity implements 
 
     private String str = "all", end = "all";
     private int pos;
-    private int type_print;
     private String type;
     private String type1, type2;    private static final int D80MMWIDTH = 576;
+    private int type_print;
 
     private final String write_perm = Manifest.permission.WRITE_EXTERNAL_STORAGE;
     private final int write_req = 100;
@@ -647,7 +647,7 @@ public class DetailedExpenseReportActivity extends AppCompatActivity implements 
 
     public void openBT(BluetoothDevice bluetoothDevice) throws IOException {
         try {
-            dialog2.dismiss();
+            dialog3.dismiss();
 
             mmDevice = bluetoothDevice;
             // Standard SerialPortService ID
