@@ -15,6 +15,7 @@
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_detailed_purchases_report.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_inventory_change_purchase_price_for_an_item_report.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_payment_sell.xml" value="0.1375" />
+        <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_product_profit_rate_report.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_products.xml" value="0.26510416666666664" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_products_buy.xml" value="0.26510416666666664" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/activity_products_purchases_from_supplier_report.xml" value="0.1375" />
@@ -31,6 +32,10 @@
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/cart_row.xml" value="0.26510416666666664" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/detailed_purchases_report_row.xml" value="0.26510416666666664" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/detailed_sales_report_row.xml" value="0.26510416666666664" />
+        <entry key="..\:/CashiarFinal/app/src/main/res/layout/fragment_aggregate_data.xml" value="0.1375" />
+        <entry key="..\:/CashiarFinal/app/src/main/res/layout/fragment_earn_sale_product.xml" value="0.1375" />
+        <entry key="..\:/CashiarFinal/app/src/main/res/layout/fragment_purchases.xml" value="0.1375" />
+        <entry key="..\:/CashiarFinal/app/src/main/res/layout/fragment_sales.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/main_category_row.xml" value="0.1375" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/new_product_bill_sell_row.xml" value="0.26510416666666664" />
         <entry key="..\:/CashiarFinal/app/src/main/res/layout/product_auto_row.xml" value="0.26510416666666664" />
