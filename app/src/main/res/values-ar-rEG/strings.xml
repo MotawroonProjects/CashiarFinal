@@ -250,6 +250,7 @@
     <string name="stock_name">إسم المخزن</string>
     <string name="stocks">المخازن</string>
     <string name="no_stocks_to_show">لا يوجد مخازن لعرضها</string>
+    <string name="dont_add">لا يمكن الاضافه من اكثر من مخزن</string>
     <string name="store_stock">رصيد المخزن</string>
     <string name="add">إضافة</string>
     <string name="product">المنتج</string>

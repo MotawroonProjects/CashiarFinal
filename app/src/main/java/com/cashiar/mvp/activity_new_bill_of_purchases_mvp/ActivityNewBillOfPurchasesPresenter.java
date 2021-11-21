@@ -4,11 +4,13 @@ import android.content.Context;
 import android.util.Log;
 
 import com.cashiar.R;
+import com.cashiar.models.AllCategoryModel;
 import com.cashiar.models.AllCustomersModel;
 import com.cashiar.models.AllProductsModel;
 import com.cashiar.models.CreateBuyOrderModel;
 import com.cashiar.models.PaymentModel;
 import com.cashiar.models.SingleProductModel;
+import com.cashiar.models.StockDataModel;
 import com.cashiar.models.UserModel;
 import com.cashiar.preferences.Preferences;
 import com.cashiar.remote.Api;
@@ -38,20 +40,57 @@ public class ActivityNewBillOfPurchasesPresenter {
 
 
     }
+    public void getStocks(UserModel userModel)
+    {
+        // Log.e("tjtjtj",userModel.getIs_confirmed());
+        view.onLoad();
+
+        Api.getService(Tags.base_url)
+                .getStocks("Bearer "+userModel.getToken())
+                .enqueue(new Callback<StockDataModel>() {
+                    @Override
+                    public void onResponse(Call<StockDataModel> call, Response<StockDataModel> response) {
+                        view.onFinishload();
+                        if (response.isSuccessful() && response.body() != null) {
+                            view.onSuccess(response.body());
+                        } else {
+                            view.onFinishload();
+                            view.onFailed(context.getString(R.string.something));
+                            try {
+                                Log.e("error_codess",response.code()+ response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
 
 
-    public void getproducts(UserModel userModel,String cat,String query)
+                    }
+
+                    @Override
+                    public void onFailure(Call<StockDataModel> call, Throwable t) {
+                        try {
+                            view.onFinishload();
+                            view.onFailed(context.getString(R.string.something));
+                            Log.e("Error", t.getMessage());
+                        } catch (Exception e) {
+
+                        }
+                    }
+                });
+    }
+
+    public void getproducts(UserModel userModel,String stock,String query)
     {
 
         Api.getService(Tags.base_url)
-                .getproducts("Bearer "+userModel.getToken(),query,cat)
+                .getproductsInStock("Bearer "+userModel.getToken(),query,stock)
                 .enqueue(new Callback<AllProductsModel>() {
                     @Override
                     public void onResponse(Call<AllProductsModel> call, Response<AllProductsModel> response) {
                         if (response.isSuccessful() && response.body() != null) {
                             view.onproductSuccess(response.body());
                         } else {
-                            view.onFailed(context.getString(R.string.something));
+                           // view.onFailed(context.getString(R.string.something));
                             try {
                                 Log.e("error_code",response.code()+  response.errorBody().string());
                             } catch (IOException e) {

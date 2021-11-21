@@ -12,6 +12,7 @@ public class CreateOrderModel implements Serializable {
     private double discount_value;
     private String date;
     private String name;
+    private String warehouse_id;
     private List<ItemCartModel> order_details;
 
     public int getClient_id() {
@@ -88,5 +89,13 @@ public class CreateOrderModel implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getWarehouse_id() {
+        return warehouse_id;
+    }
+
+    public void setWarehouse_id(String warehouse_id) {
+        this.warehouse_id = warehouse_id;
     }
 }

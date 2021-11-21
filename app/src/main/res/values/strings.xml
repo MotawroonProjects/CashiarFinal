@@ -252,4 +252,5 @@
     <string name="store_stock">Store stock</string>
     <string name="add">Add</string>
     <string name="product">Product</string>
+    <string name="dont_add">You Can,t Add From  More Than One Stock</string>
 </resources>

@@ -11,6 +11,8 @@ private int supplier_id;
         private double remaining_price;
         private double discount_value;
         private String date;
+        private String warehouse_id;
+
         private List<ItemCartModel> order_details;
 
     public int getSupplier_id() {
@@ -78,5 +80,13 @@ private int supplier_id;
 
     public void setOrder_details(List<ItemCartModel> order_details) {
         this.order_details = order_details;
+    }
+
+    public void setWarehouse_id(String warehouse_id) {
+        this.warehouse_id = warehouse_id;
+    }
+
+    public String getWarehouse_id() {
+        return warehouse_id;
     }
 }

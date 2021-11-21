@@ -6,6 +6,7 @@ import com.cashiar.models.AllDiscountsModel;
 import com.cashiar.models.AllProductsModel;
 import com.cashiar.models.BillModel;
 import com.cashiar.models.SingleProductModel;
+import com.cashiar.models.StockDataModel;
 import com.cashiar.models.UserModel;
 
 public interface NewSellOfSellActivityView {
@@ -30,4 +31,6 @@ public interface NewSellOfSellActivityView {
     void onCustomers();
 
     void onsucess(BillModel body);
+
+    void onSuccess(StockDataModel body);
 }

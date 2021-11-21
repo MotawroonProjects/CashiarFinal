@@ -839,8 +839,7 @@ public interface Service {
     );
 
     @GET("api/searchWarehouses")
-    Call<StockDataModel> getStocks(
-            @Header("Authorization") String Authorization
+    Call<StockDataModel> getStocks(@Header("Authorization") String Authorization
 
     );
 
@@ -854,10 +853,9 @@ public interface Service {
 
     @FormUrlEncoded
     @POST("api/getProductsByWarehouse")
-    Call<AllProductsModel> getproductsInStock(
-            @Header("Authorization") String Authorization,
-            @Field("search_keyWord") String search_keyWord,
-            @Field("warehouse_id") String warehouse_id);
+    Call<AllProductsModel> getproductsInStock(@Header("Authorization") String Authorization,
+                                              @Field("search_keyWord") String search_keyWord,
+                                              @Field("warehouse_id") String warehouse_id);
 
 
     @FormUrlEncoded

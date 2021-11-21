@@ -21,6 +21,7 @@ public class SingleBillOfSellModel implements Serializable {
     private String deleted_at;
     private String created_at;
     private String updated_at;
+    private int warehouse_id;
     private SingleCustomerSuplliersModel client;
     private SingleCustomerSuplliersModel supplier;
 
@@ -109,6 +110,10 @@ public class SingleBillOfSellModel implements Serializable {
 
     public List<SaleDetials> getPurchase_details() {
         return purchase_details;
+    }
+
+    public int getWarehouse_id() {
+        return warehouse_id;
     }
 
     public class SaleDetials implements Serializable {

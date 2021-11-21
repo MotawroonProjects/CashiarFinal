@@ -23,18 +23,24 @@ import com.cashiar.R;
 import com.cashiar.adapters.DelteNewproductSwipe;
 import com.cashiar.adapters.NewProductBillSellAdapter;
 import com.cashiar.adapters.ProductAutoAdapter;
+import com.cashiar.adapters.SpinnerCategoryAdapter;
 import com.cashiar.adapters.SpinnerCustomerAdapter;
+import com.cashiar.adapters.SpinnerStockAdapter;
 import com.cashiar.databinding.ActivityANewBillOfPurchasesBinding;
 import com.cashiar.databinding.DialogInpiutBinding;
 import com.cashiar.databinding.DialogNewBillPurchaasesBinding;
 import com.cashiar.language.Language;
+import com.cashiar.models.AllCategoryModel;
 import com.cashiar.models.AllCustomersModel;
 import com.cashiar.models.AllProductsModel;
 import com.cashiar.models.CreateBuyOrderModel;
 import com.cashiar.models.ItemCartModel;
 import com.cashiar.models.PaymentModel;
+import com.cashiar.models.SingleCategoryModel;
 import com.cashiar.models.SingleCustomerSuplliersModel;
 import com.cashiar.models.SingleProductModel;
+import com.cashiar.models.StockDataModel;
+import com.cashiar.models.StockModel;
 import com.cashiar.models.UserModel;
 import com.cashiar.mvp.activity_new_bill_of_purchases_mvp.ActivityNewBillOfPurchasesPresenter;
 import com.cashiar.mvp.activity_new_bill_of_purchases_mvp.NewBillOfPurchasesActivityView;
@@ -63,7 +69,7 @@ public class NewBillOfPurchasesActivity extends AppCompatActivity implements New
     private UserModel userModel;
     private Preferences preferences;
     private ProgressDialog dialog;
-    private String cat = "all", query = "";
+    private String cat = "all", query = "", stock;
     private int pos;
     private String currency = "";
     private int taderid;
@@ -78,6 +84,8 @@ public class NewBillOfPurchasesActivity extends AppCompatActivity implements New
     private String name;
     private PaymentModel paymentModel;
     private double paid;
+    private List<StockModel> stockModelList;
+    private SpinnerStockAdapter spinnerStockAdapter;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -94,6 +102,7 @@ public class NewBillOfPurchasesActivity extends AppCompatActivity implements New
 
 
     private void initView() {
+        stockModelList = new ArrayList<>();
         Paper.init(this);
         paymentModel = new PaymentModel();
         createOrderModel = new CreateBuyOrderModel();
@@ -116,10 +125,27 @@ public class NewBillOfPurchasesActivity extends AppCompatActivity implements New
         binding.recView.setAdapter(newProductBillSellAdapter);
         presenter.getprofile(userModel);
         presenter.getsuppliers(userModel);
+        presenter.getStocks(userModel);
         binding.edtSearch.setAdapter(productsAdapter);
+
         ItemTouchHelper.SimpleCallback simpleCallback = new DelteNewproductSwipe(this, 0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT, this);
         ItemTouchHelper helper = new ItemTouchHelper(simpleCallback);
         helper.attachToRecyclerView(binding.recView);
+        binding.spStock.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                stock = stockModelList.get(i).getId() + "";
+
+
+                presenter.getproducts(userModel, stock, query);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         // presenter.getproducts(userModel, cat, query);
 //        binding.llMap.setOnTouchListener(new View.OnTouchListener() {
 //            @Override
@@ -220,10 +246,10 @@ public class NewBillOfPurchasesActivity extends AppCompatActivity implements New
             @Override
             public void afterTextChanged(Editable s) {
                 query = binding.edtSearch.getText().toString();
-                if (query == null || query.isEmpty()) {
-                    query = "all";
+                if (query.isEmpty()) {
+                    query = "";
                 }
-                presenter.getproducts(userModel, cat, query);
+                presenter.getproducts(userModel, stock, query);
 
             }
         });
@@ -316,6 +342,7 @@ public class NewBillOfPurchasesActivity extends AppCompatActivity implements New
     @Override
     public void onproductSuccess(AllProductsModel allProductsModel) {
 
+Log.e("sizess",allProductsModel.getData().size()+"");
         singleProductModels.clear();
         singleProductModels.addAll(allProductsModel.getData());
 
@@ -360,31 +387,35 @@ public class NewBillOfPurchasesActivity extends AppCompatActivity implements New
         ItemCartModel itemCartModel = new ItemCartModel();
 
         itemCartModel.setProduct_id(singleProductModel.getId());
-
+        itemCartModel.setStockid(Integer.parseInt(stock));
 
         binding.edtSearch.setText(singleProductModel.getTitle());
-        if (iscontain(itemCartModel)) {
-
-
-            Log.e("dlldkkdkd", "dklkdkdkkd");
-            ItemCartModel itemCartModel1 = singleProductModelList.get(index);
-            itemCartModel1.setAmount((itemCartModel1.getAmount2()) + itemCartModel1.getAmount());
-            singleProductModelList.set(index, itemCartModel1);
+        if (singleProductModelList.size() > 0 && singleProductModelList.get(0).getStockid() != itemCartModel.getStockid()) {
+            Toast.makeText(this, getResources().getString(R.string.dont_add), Toast.LENGTH_LONG).show();
         } else {
-            itemCartModel.setAmount(1);
-            itemCartModel.setAmount2(1);
-            itemCartModel.setImage(singleProductModel.getImage());
-            itemCartModel.setPrice_value(singleProductModel.getProduct_cost());
-            itemCartModel.setProduct_id(singleProductModel.getId());
-            itemCartModel.setTitle(singleProductModel.getTitle());
-            itemCartModel.setType(singleProductModel.getProduct_type());
-            itemCartModel.setStock(singleProductModel.getStock_amount());
+            if (iscontain(itemCartModel)) {
 
-            singleProductModelList.add(itemCartModel);
 
+                Log.e("dlldkkdkd", "dklkdkdkkd");
+                ItemCartModel itemCartModel1 = singleProductModelList.get(index);
+                itemCartModel1.setAmount((itemCartModel1.getAmount2()) + itemCartModel1.getAmount());
+                singleProductModelList.set(index, itemCartModel1);
+            } else {
+                itemCartModel.setAmount(1);
+                itemCartModel.setAmount2(1);
+                itemCartModel.setImage(singleProductModel.getImage());
+                itemCartModel.setPrice_value(singleProductModel.getProduct_cost());
+                itemCartModel.setProduct_id(singleProductModel.getId());
+                itemCartModel.setTitle(singleProductModel.getTitle());
+                itemCartModel.setType(singleProductModel.getProduct_type());
+                itemCartModel.setStock(singleProductModel.getStock_amount());
+
+                singleProductModelList.add(itemCartModel);
+
+            }
+            newProductBillSellAdapter.notifyDataSetChanged();
+            calculateTotal();
         }
-        newProductBillSellAdapter.notifyDataSetChanged();
-        calculateTotal();
     }
 
     private boolean iscontain(ItemCartModel singleProductModel) {
@@ -405,7 +436,7 @@ public class NewBillOfPurchasesActivity extends AppCompatActivity implements New
         newProductBillSellAdapter.notifyDataSetChanged();
     }
 
-    public void CreateDialogAlert(Context context, int pos,String type) {
+    public void CreateDialogAlert(Context context, int pos, String type) {
         final AlertDialog dialog = new AlertDialog.Builder(context)
                 .create();
 
@@ -415,20 +446,20 @@ public class NewBillOfPurchasesActivity extends AppCompatActivity implements New
         }
 
         dialogInpiutBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
-                                                 @Override
-                                                 public void onClick(View v) {
-                                                     String amount = dialogInpiutBinding.edtwieght.getText().toString();
-                                                     if (!amount.isEmpty()) {
-                                                         dialog.dismiss();
-                                                         singleProductModelList.get(pos).setAmount2(Double.parseDouble(amount));
-                                                         singleProductModelList.get(pos).setAmount(Double.parseDouble(amount) + singleProductModelList.get(pos).getAmount());
-                                                         newProductBillSellAdapter.notifyItemChanged(pos);
-                                                         calculateTotal();
-                                                     } else {
-                                                         dialogInpiutBinding.edtwieght.setError(context.getResources().getString(R.string.field_required));
-                                                     }
-                                                 }
-                                             }
+                                                             @Override
+                                                             public void onClick(View v) {
+                                                                 String amount = dialogInpiutBinding.edtwieght.getText().toString();
+                                                                 if (!amount.isEmpty()) {
+                                                                     dialog.dismiss();
+                                                                     singleProductModelList.get(pos).setAmount2(Double.parseDouble(amount));
+                                                                     singleProductModelList.get(pos).setAmount(Double.parseDouble(amount) + singleProductModelList.get(pos).getAmount());
+                                                                     newProductBillSellAdapter.notifyItemChanged(pos);
+                                                                     calculateTotal();
+                                                                 } else {
+                                                                     dialogInpiutBinding.edtwieght.setError(context.getResources().getString(R.string.field_required));
+                                                                 }
+                                                             }
+                                                         }
 
         );
         dialog.getWindow().getAttributes().windowAnimations = R.style.Theme_App;
@@ -480,6 +511,7 @@ public class NewBillOfPurchasesActivity extends AppCompatActivity implements New
             @Override
             public void onClick(View view) {
                 createOrderModel.setSupplier_id(client_id);
+                createOrderModel.setWarehouse_id(singleProductModelList.get(0).getStockid()+"");
                 String date[] = binding.tvdate.getText().toString().split("/");
                 createOrderModel.setDate(date[2] + "-" + date[1] + "-" + date[0]);
                 createOrderModel.setTotal_price(Math.round(total));
@@ -583,6 +615,16 @@ public class NewBillOfPurchasesActivity extends AppCompatActivity implements New
     public void onsucess() {
         Toast.makeText(this, getResources().getString(R.string.suc), Toast.LENGTH_LONG).show();
         finish();
+
+    }
+
+    @Override
+    public void onSuccess(StockDataModel model) {
+
+        Log.e("dlldldl", model.getData().size() + "");
+        stockModelList.addAll(model.getData());
+        spinnerStockAdapter = new SpinnerStockAdapter(stockModelList, this);
+        binding.spStock.setAdapter(spinnerStockAdapter);
 
     }
 

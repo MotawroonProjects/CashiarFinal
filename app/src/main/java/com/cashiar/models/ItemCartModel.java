@@ -11,6 +11,7 @@ public class ItemCartModel implements Serializable {
     private String type;
     private double amount2;
     private double stock;
+    private int stockid;
 
     public double getStock() {
         return stock;
@@ -74,5 +75,13 @@ public class ItemCartModel implements Serializable {
 
     public void setAmount2(double amount2) {
         this.amount2 = amount2;
+    }
+
+    public int getStockid() {
+        return stockid;
+    }
+
+    public void setStockid(int stockid) {
+        this.stockid = stockid;
     }
 }

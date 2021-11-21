@@ -5,6 +5,7 @@ import com.cashiar.models.AllDiscountsModel;
 import com.cashiar.models.AllProductsModel;
 import com.cashiar.models.BillModel;
 import com.cashiar.models.SingleProductModel;
+import com.cashiar.models.StockDataModel;
 import com.cashiar.models.UserModel;
 
 public interface NewBillOfPurchasesActivityView {
@@ -28,4 +29,6 @@ public interface NewBillOfPurchasesActivityView {
     void onSupplier();
 
     void onsucess();
+
+    void onSuccess(StockDataModel body);
 }

@@ -126,41 +126,51 @@ public class ProductsBillSellActivity extends AppCompatActivity implements Produ
     public void addproductstocart(SingleBillOfSellModel.SaleDetials singleProductModel) {
 
         if (preferences.getCartDatabillsell(this) != null) {
+
             int index = -1;
             createOrderModel = preferences.getCartDatabillsell(this);
-            itemCartModels = preferences.getCartDatabillsell(this).getOrder_details();
-            for (int i = 0; i < itemCartModels.size(); i++) {
-                if (singleProductModel.getProduct().getId() == itemCartModels.get(i).getProduct_id()) {
-                    index = i;
-                    break;
+            if(createOrderModel.getWarehouse_id().equals(singleBillOfSellModel.getWarehouse_id()+"")) {
+                itemCartModels = preferences.getCartDatabillsell(this).getOrder_details();
+                for (int i = 0; i < itemCartModels.size(); i++) {
+                    if (singleProductModel.getProduct().getId() == itemCartModels.get(i).getProduct_id()) {
+                        index = i;
+                        break;
+                    }
                 }
-            }
-            if (index != -1) {
-                ItemCartModel itemCartModel = itemCartModels.get(index);
-                if (itemCartModel.getStock() >= ((1 * itemCartModel.getAmount2()) + itemCartModel.getAmount())) {
+                if (index != -1) {
+                    ItemCartModel itemCartModel = itemCartModels.get(index);
+                    if (itemCartModel.getStock() >= ((1 * itemCartModel.getAmount2()) + itemCartModel.getAmount())) {
 
-                    itemCartModel.setAmount((1 * itemCartModel.getAmount2()) + itemCartModel.getAmount());
-                    itemCartModels.set(index, itemCartModel);
+                        itemCartModel.setAmount((1 * itemCartModel.getAmount2()) + itemCartModel.getAmount());
+                        itemCartModels.set(index, itemCartModel);
+                        createOrderModel.setOrder_details(itemCartModels);
+                    }
+                } else {
+                    ItemCartModel itemCartModel = new ItemCartModel();
+                    itemCartModel.setAmount(1);
+                    itemCartModel.setAmount2(1);
+
+                    itemCartModel.setImage(singleProductModel.getProduct().getImage());
+                    itemCartModel.setPrice_value(singleProductModel.getProduct().getProduct_price());
+                    itemCartModel.setProduct_id(singleProductModel.getProduct().getId());
+                    itemCartModel.setTitle(singleProductModel.getProduct().getTitle());
+                    itemCartModel.setType(singleProductModel.getProduct().getProduct_type());
+                    itemCartModel.setStock(singleProductModel.getAmount());
+                    itemCartModels.add(itemCartModel);
                     createOrderModel.setOrder_details(itemCartModels);
                 }
-            } else {
-                ItemCartModel itemCartModel = new ItemCartModel();
-                itemCartModel.setAmount(1);
-                itemCartModel.setAmount2(1);
-
-                itemCartModel.setImage(singleProductModel.getProduct().getImage());
-                itemCartModel.setPrice_value(singleProductModel.getProduct().getProduct_price());
-                itemCartModel.setProduct_id(singleProductModel.getProduct().getId());
-                itemCartModel.setTitle(singleProductModel.getProduct().getTitle());
-                itemCartModel.setType(singleProductModel.getProduct().getProduct_type());
-                itemCartModel.setStock(singleProductModel.getAmount());
-                itemCartModels.add(itemCartModel);
-                createOrderModel.setOrder_details(itemCartModels);
             }
+            else {
+                Toast.makeText(this, getResources().getString(R.string.dont_add), Toast.LENGTH_LONG).show();
 
-        } else {
+            }
+        }
+        else {
             itemCartModels = new ArrayList<>();
             createOrderModel = new CreateOrderModel();
+            if(createOrderModel!=null&&singleBillOfSellModel!=null){
+                createOrderModel.setWarehouse_id(singleBillOfSellModel.getWarehouse_id()+"");
+            }
             createOrderModel.setClient_id(singleBillOfSellModel.getClient_id());
             ItemCartModel itemCartModel = new ItemCartModel();
             itemCartModel.setAmount(1);

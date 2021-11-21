@@ -92,7 +92,7 @@ public class ProductsBillBuyActivity extends AppCompatActivity implements Produc
         presenter = new ActivityProductsbillBuyPresenter(this, this);
         presenter.getprofile(userModel);
 
-        productsAdapter = new ProductsBillSellAdapter(this, singleProductModelList,currency);
+        productsAdapter = new ProductsBillSellAdapter(this, singleProductModelList, currency);
         binding.recView.setLayoutManager(new LinearLayoutManager(this));
         binding.recView.setAdapter(productsAdapter);
 
@@ -102,12 +102,14 @@ public class ProductsBillBuyActivity extends AppCompatActivity implements Produc
                 presenter.Cart();
             }
         });
+
     }
 
     @Override
     public void onBackPressed() {
         presenter.backPress();
     }
+
     @Override
     public void onLoad() {
         if (dialog == null) {
@@ -126,15 +128,15 @@ public class ProductsBillBuyActivity extends AppCompatActivity implements Produc
 
     @Override
     public void onFailed(String msg) {
-        Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
 
     @Override
     public void onprofileload(UserModel body) {
         this.currency = body.getCurrency();
-productsAdapter.currency=currency;
-productsAdapter.notifyDataSetChanged();
+        productsAdapter.currency = currency;
+        productsAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -160,39 +162,48 @@ productsAdapter.notifyDataSetChanged();
         if (preferences.getCartDatabillbuy(this) != null) {
             int index = -1;
             createOrderModel = preferences.getCartDatabillbuy(this);
-            itemCartModels = preferences.getCartDatabillbuy(this).getOrder_details();
-            for (int i = 0; i < itemCartModels.size(); i++) {
-                if (singleProductModel.getProduct().getId() == itemCartModels.get(i).getProduct_id()) {
-                    index = i;
-                    break;
-                }
-            }
-            if (index != -1) {
-                ItemCartModel itemCartModel = itemCartModels.get(index);
-                if (itemCartModel.getStock() >= ((1 * itemCartModel.getAmount2()) + itemCartModel.getAmount())) {
+            if (createOrderModel.getWarehouse_id().equals(singleBillOfSellModel.getWarehouse_id() + "")) {
 
-                    itemCartModel.setAmount((1 * itemCartModel.getAmount2()) + itemCartModel.getAmount());
-                    itemCartModels.set(index, itemCartModel);
+                itemCartModels = preferences.getCartDatabillbuy(this).getOrder_details();
+                for (int i = 0; i < itemCartModels.size(); i++) {
+                    if (singleProductModel.getProduct().getId() == itemCartModels.get(i).getProduct_id()) {
+                        index = i;
+                        break;
+                    }
+                }
+                if (index != -1) {
+                    ItemCartModel itemCartModel = itemCartModels.get(index);
+                    if (itemCartModel.getStock() >= ((1 * itemCartModel.getAmount2()) + itemCartModel.getAmount())) {
+
+                        itemCartModel.setAmount((1 * itemCartModel.getAmount2()) + itemCartModel.getAmount());
+                        itemCartModels.set(index, itemCartModel);
+                        createOrderModel.setOrder_details(itemCartModels);
+                    }
+                } else {
+                    ItemCartModel itemCartModel = new ItemCartModel();
+                    itemCartModel.setAmount(1);
+                    itemCartModel.setAmount2(1);
+
+                    itemCartModel.setImage(singleProductModel.getProduct().getImage());
+                    itemCartModel.setPrice_value(singleProductModel.getProduct().getProduct_cost());
+                    itemCartModel.setProduct_id(singleProductModel.getProduct().getId());
+                    itemCartModel.setTitle(singleProductModel.getProduct().getTitle());
+                    itemCartModel.setType(singleProductModel.getProduct().getProduct_type());
+                    itemCartModel.setStock(singleProductModel.getAmount());
+                    itemCartModels.add(itemCartModel);
                     createOrderModel.setOrder_details(itemCartModels);
                 }
             } else {
-                ItemCartModel itemCartModel = new ItemCartModel();
-                itemCartModel.setAmount(1);
-                itemCartModel.setAmount2(1);
+                Toast.makeText(this, getResources().getString(R.string.dont_add), Toast.LENGTH_LONG).show();
 
-                itemCartModel.setImage(singleProductModel.getProduct().getImage());
-                itemCartModel.setPrice_value(singleProductModel.getProduct().getProduct_cost());
-                itemCartModel.setProduct_id(singleProductModel.getProduct().getId());
-                itemCartModel.setTitle(singleProductModel.getProduct().getTitle());
-                itemCartModel.setType(singleProductModel.getProduct().getProduct_type());
-                itemCartModel.setStock(singleProductModel.getAmount());
-                itemCartModels.add(itemCartModel);
-                createOrderModel.setOrder_details(itemCartModels);
             }
 
         } else {
             itemCartModels = new ArrayList<>();
             createOrderModel = new CreateBuyOrderModel();
+            if (createOrderModel != null && singleBillOfSellModel != null) {
+                createOrderModel.setWarehouse_id(singleBillOfSellModel.getWarehouse_id() + "");
+            }
             createOrderModel.setSupplier_id(singleBillOfSellModel.getSupplier_id());
             ItemCartModel itemCartModel = new ItemCartModel();
             itemCartModel.setAmount(1);
@@ -210,7 +221,7 @@ productsAdapter.notifyDataSetChanged();
         }
         preferences.create_update_cartbillbuy(this, createOrderModel);
         binding.setCartcount(createOrderModel.getOrder_details().size());
-        Toast.makeText(this,getResources().getString(R.string.addtocartsucess),Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getResources().getString(R.string.addtocartsucess), Toast.LENGTH_LONG).show();
 
     }
 
@@ -219,8 +230,7 @@ productsAdapter.notifyDataSetChanged();
         super.onRestart();
         if (preferences != null && preferences.getCartDatabillbuy(this) == null) {
             binding.setCartcount(0);
-        }
-        else {
+        } else {
             binding.setCartcount(preferences.getCartDatabillbuy(this).getOrder_details().size());
         }
     }

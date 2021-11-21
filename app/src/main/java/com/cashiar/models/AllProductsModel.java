@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.util.List;
 
 public class AllProductsModel implements Serializable {
-private List<SingleProductModel> data;
+    private List<SingleProductModel> data;
 
     public List<SingleProductModel> getData() {
         return data;
     }
+
     private List<SingleProductModel> today;
     private List<SingleProductModel> yesterday;
     private List<SingleProductModel> this_month;

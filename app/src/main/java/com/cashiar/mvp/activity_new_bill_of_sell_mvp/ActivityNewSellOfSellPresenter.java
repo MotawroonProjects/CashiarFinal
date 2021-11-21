@@ -12,6 +12,7 @@ import com.cashiar.models.BillModel;
 import com.cashiar.models.CreateOrderModel;
 import com.cashiar.models.PaymentModel;
 import com.cashiar.models.SingleProductModel;
+import com.cashiar.models.StockDataModel;
 import com.cashiar.models.UserModel;
 import com.cashiar.preferences.Preferences;
 import com.cashiar.remote.Api;
@@ -43,20 +44,57 @@ public class ActivityNewSellOfSellPresenter {
     }
 
 
-    public void getproducts(UserModel userModel,String cat,String query)
-    {
+    public void getStocks(UserModel userModel) {
+        // Log.e("tjtjtj",userModel.getIs_confirmed());
+        view.onLoad();
 
         Api.getService(Tags.base_url)
-                .getproducts("Bearer "+userModel.getToken(),query,cat)
+                .getStocks("Bearer " + userModel.getToken())
+                .enqueue(new Callback<StockDataModel>() {
+                    @Override
+                    public void onResponse(Call<StockDataModel> call, Response<StockDataModel> response) {
+                        view.onFinishload();
+                        if (response.isSuccessful() && response.body() != null) {
+                            view.onSuccess(response.body());
+                        } else {
+                            view.onFinishload();
+                            view.onFailed(context.getString(R.string.something));
+                            try {
+                                Log.e("error_codess", response.code() + response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<StockDataModel> call, Throwable t) {
+                        try {
+                            view.onFinishload();
+                            view.onFailed(context.getString(R.string.something));
+                            Log.e("Error", t.getMessage());
+                        } catch (Exception e) {
+
+                        }
+                    }
+                });
+    }
+
+    public void getproducts(UserModel userModel, String stock, String query) {
+       // Log.e("Dkdkdkd", stock);
+        Api.getService(Tags.base_url)
+                .getproductsInStock("Bearer " + userModel.getToken(), query, stock)
                 .enqueue(new Callback<AllProductsModel>() {
                     @Override
                     public void onResponse(Call<AllProductsModel> call, Response<AllProductsModel> response) {
                         if (response.isSuccessful() && response.body() != null) {
                             view.onproductSuccess(response.body());
                         } else {
-                            view.onFailed(context.getString(R.string.something));
+                            //view.onFailed(context.getString(R.string.something));
                             try {
-                                Log.e("error_code",response.code()+  response.errorBody().string());
+                                Log.e("error_code", response.code() + response.errorBody().string());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -76,13 +114,13 @@ public class ActivityNewSellOfSellPresenter {
                     }
                 });
     }
-    public void getprofile(UserModel userModel)
-    {
+
+    public void getprofile(UserModel userModel) {
         //   Log.e("tjtjtj",singleDoctorModel.getId()+"  "+user_id);
         view.onLoad();
 
         Api.getService(Tags.base_url)
-                .getprofile("Bearer "+userModel.getToken())
+                .getprofile("Bearer " + userModel.getToken())
                 .enqueue(new Callback<UserModel>() {
                     @Override
                     public void onResponse(Call<UserModel> call, Response<UserModel> response) {
@@ -94,7 +132,7 @@ public class ActivityNewSellOfSellPresenter {
                             view.onFinishload();
                             view.onFailed(context.getString(R.string.something));
                             try {
-                                Log.e("error_codess",response.code()+ response.errorBody().string());
+                                Log.e("error_codess", response.code() + response.errorBody().string());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -115,12 +153,12 @@ public class ActivityNewSellOfSellPresenter {
                     }
                 });
     }
-    public void getsingleproduct(UserModel userModel,String barcode)
-    {
+
+    public void getsingleproduct(UserModel userModel, String barcode) {
         view.onProgressShow();
 
         Api.getService(Tags.base_url)
-                .getsingleproductbybarcode("Bearer "+userModel.getToken(),barcode)
+                .getsingleproductbybarcode("Bearer " + userModel.getToken(), barcode)
                 .enqueue(new Callback<SingleProductModel>() {
                     @Override
                     public void onResponse(Call<SingleProductModel> call, Response<SingleProductModel> response) {
@@ -131,7 +169,7 @@ public class ActivityNewSellOfSellPresenter {
                             view.onProgressHide();
                             view.onFailed(context.getString(R.string.something));
                             try {
-                                Log.e("error_code",response.code()+  response.errorBody().string());
+                                Log.e("error_code", response.code() + response.errorBody().string());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -153,23 +191,22 @@ public class ActivityNewSellOfSellPresenter {
                 });
     }
 
-    public void getdiscount(UserModel userModel)
-    {
+    public void getdiscount(UserModel userModel) {
         view.onLoad();
 
         Api.getService(Tags.base_url)
-                .getDiscount("Bearer "+userModel.getToken())
+                .getDiscount("Bearer " + userModel.getToken())
                 .enqueue(new Callback<AllDiscountsModel>() {
                     @Override
                     public void onResponse(Call<AllDiscountsModel> call, Response<AllDiscountsModel> response) {
                         view.onFinishload();
-                        if (response.isSuccessful() && response.body() != null&&response.body().getData()!=null) {
+                        if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
                             view.ondiscountSuccess(response.body());
                         } else {
                             view.onFinishload();
                             view.onFailed(context.getResources().getString(R.string.something));
                             try {
-                                Log.e("error_code",response.code()+  response.errorBody().string());
+                                Log.e("error_code", response.code() + response.errorBody().string());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -237,6 +274,7 @@ public class ActivityNewSellOfSellPresenter {
             Create_order(userModel, createOrderModel);
         }
     }
+
     public void Create_order(UserModel userModel, CreateOrderModel createOrderModel) {
         view.onLoad();
 

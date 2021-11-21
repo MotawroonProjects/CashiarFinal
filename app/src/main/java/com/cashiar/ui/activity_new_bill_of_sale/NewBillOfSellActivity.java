@@ -31,6 +31,7 @@ import com.cashiar.adapters.ProductsAdapter;
 import com.cashiar.adapters.SpinnerCategoryAdapter;
 import com.cashiar.adapters.SpinnerCustomerAdapter;
 import com.cashiar.adapters.SpinnerDiscountAdapter;
+import com.cashiar.adapters.SpinnerStockAdapter;
 import com.cashiar.databinding.ActivityANewBillOfSaleBinding;
 import com.cashiar.databinding.ActivityProductsBinding;
 import com.cashiar.databinding.DialogInpiutBinding;
@@ -48,6 +49,8 @@ import com.cashiar.models.SingleCategoryModel;
 import com.cashiar.models.SingleCustomerSuplliersModel;
 import com.cashiar.models.SingleDiscountModel;
 import com.cashiar.models.SingleProductModel;
+import com.cashiar.models.StockDataModel;
+import com.cashiar.models.StockModel;
 import com.cashiar.models.UserModel;
 import com.cashiar.mvp.activity_new_bill_of_sell_mvp.ActivityNewSellOfSellPresenter;
 import com.cashiar.mvp.activity_new_bill_of_sell_mvp.NewSellOfSellActivityView;
@@ -82,7 +85,7 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
     private UserModel userModel;
     private Preferences preferences;
     private ProgressDialog dialog;
-    private String cat = "all", query = "";
+    private String cat = "all", query ;
     private int pos;
     private String currency = "";
     private int taderid;
@@ -101,6 +104,9 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
     private String name;
     private PaymentModel paymentModel;
     private double paid;
+    private List<StockModel> stockModelList;
+    private SpinnerStockAdapter spinnerStockAdapter;
+    private String stock;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -117,6 +123,8 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
 
 
     private void initView() {
+        stockModelList = new ArrayList<>();
+
         Paper.init(this);
         paymentModel = new PaymentModel();
         createOrderModel = new CreateOrderModel();
@@ -134,16 +142,34 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
 
         presenter = new ActivityNewSellOfSellPresenter(this, this);
         binding.recView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recView.setHasFixedSize(true);        productsAdapter = new ProductAutoAdapter(this, R.layout.product_auto_row, singleProductModels);
+        binding.recView.setHasFixedSize(true);
+        productsAdapter = new ProductAutoAdapter(this, R.layout.product_auto_row, singleProductModels);
         newProductBillSellAdapter = new NewProductBillSellAdapter(this, singleProductModelList, currency);
         binding.recView.setAdapter(newProductBillSellAdapter);
         presenter.getprofile(userModel);
         presenter.getdiscount(userModel);
         presenter.getcustomer(userModel);
+        presenter.getStocks(userModel);
         binding.edtSearch.setAdapter(productsAdapter);
         ItemTouchHelper.SimpleCallback simpleCallback = new DelteNewproductSwipe(this, 0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT, this);
         ItemTouchHelper helper = new ItemTouchHelper(simpleCallback);
         helper.attachToRecyclerView(binding.recView);
+        binding.spStock.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                stock = stockModelList.get(i).getId() + "";
+
+
+                presenter.getproducts(userModel, stock, query);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         // presenter.getproducts(userModel, cat, query);
 //        binding.llMap.setOnTouchListener(new View.OnTouchListener() {
 //            @Override
@@ -244,10 +270,8 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
             @Override
             public void afterTextChanged(Editable s) {
                 query = binding.edtSearch.getText().toString();
-                if (query == null || query.isEmpty()) {
-                    query = "all";
-                }
-                presenter.getproducts(userModel, cat, query);
+
+                presenter.getproducts(userModel, stock, query);
 
             }
         });
@@ -286,7 +310,6 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
     public void onFinished() {
         finish();
     }
-
 
 
     @Override
@@ -386,31 +409,35 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
         ItemCartModel itemCartModel = new ItemCartModel();
 
         itemCartModel.setProduct_id(singleProductModel.getId());
-
+        itemCartModel.setStockid(Integer.parseInt(stock));
 
         binding.edtSearch.setText(singleProductModel.getTitle());
-        if (iscontain(itemCartModel)) {
-
-
-            Log.e("dlldkkdkd", "dklkdkdkkd");
-            ItemCartModel itemCartModel1 = singleProductModelList.get(index);
-            itemCartModel1.setAmount((itemCartModel1.getAmount2()) + itemCartModel1.getAmount());
-            singleProductModelList.set(index, itemCartModel1);
+        if (singleProductModelList.size() > 0 && singleProductModelList.get(0).getStockid() != itemCartModel.getStockid()) {
+            Toast.makeText(this, getResources().getString(R.string.dont_add), Toast.LENGTH_LONG).show();
         } else {
-            itemCartModel.setAmount(1);
-            itemCartModel.setAmount2(1);
-            itemCartModel.setImage(singleProductModel.getImage());
-            itemCartModel.setPrice_value(singleProductModel.getProduct_price());
-            itemCartModel.setProduct_id(singleProductModel.getId());
-            itemCartModel.setTitle(singleProductModel.getTitle());
-            itemCartModel.setType(singleProductModel.getProduct_type());
-            itemCartModel.setStock(singleProductModel.getStock_amount());
+            if (iscontain(itemCartModel)) {
 
-            singleProductModelList.add(itemCartModel);
 
+                Log.e("dlldkkdkd", "dklkdkdkkd");
+                ItemCartModel itemCartModel1 = singleProductModelList.get(index);
+                itemCartModel1.setAmount((itemCartModel1.getAmount2()) + itemCartModel1.getAmount());
+                singleProductModelList.set(index, itemCartModel1);
+            } else {
+                itemCartModel.setAmount(1);
+                itemCartModel.setAmount2(1);
+                itemCartModel.setImage(singleProductModel.getImage());
+                itemCartModel.setPrice_value(singleProductModel.getProduct_price());
+                itemCartModel.setProduct_id(singleProductModel.getId());
+                itemCartModel.setTitle(singleProductModel.getTitle());
+                itemCartModel.setType(singleProductModel.getProduct_type());
+                itemCartModel.setStock(singleProductModel.getStock_amount());
+
+                singleProductModelList.add(itemCartModel);
+
+            }
+            newProductBillSellAdapter.notifyDataSetChanged();
+            calculateTotal();
         }
-        newProductBillSellAdapter.notifyDataSetChanged();
-        calculateTotal();
     }
 
     private boolean iscontain(ItemCartModel singleProductModel) {
@@ -436,7 +463,7 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
                 .create();
 
         DialogInpiutBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_inpiut, null, false);
-        if(!type.equals("weight")){
+        if (!type.equals("weight")) {
             binding.edtwieght.setHint(getResources().getString(R.string.amount));
         }
 
@@ -445,14 +472,14 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
                                                  public void onClick(View v) {
                                                      String amount = binding.edtwieght.getText().toString();
                                                      if (!amount.isEmpty()) {
-                                                         if(Double.parseDouble(amount)+singleProductModelList.get(pos).getAmount()<stock){
-                                                         dialog.dismiss();
-                                                         singleProductModelList.get(pos).setAmount2(Double.parseDouble(amount));
-                                                         singleProductModelList.get(pos).setAmount(Double.parseDouble(amount) + singleProductModelList.get(pos).getAmount());
-                                                         newProductBillSellAdapter.notifyItemChanged(pos);
-                                                         calculateTotal();}
-                                                         else{
-                                                             Toast.makeText(NewBillOfSellActivity.this, getResources().getString(R.string.out_of_stock),Toast.LENGTH_LONG).show();
+                                                         if (Double.parseDouble(amount) + singleProductModelList.get(pos).getAmount() < stock) {
+                                                             dialog.dismiss();
+                                                             singleProductModelList.get(pos).setAmount2(Double.parseDouble(amount));
+                                                             singleProductModelList.get(pos).setAmount(Double.parseDouble(amount) + singleProductModelList.get(pos).getAmount());
+                                                             newProductBillSellAdapter.notifyItemChanged(pos);
+                                                             calculateTotal();
+                                                         } else {
+                                                             Toast.makeText(NewBillOfSellActivity.this, getResources().getString(R.string.out_of_stock), Toast.LENGTH_LONG).show();
                                                          }
                                                      } else {
                                                          binding.edtwieght.setError(context.getResources().getString(R.string.field_required));
@@ -472,13 +499,16 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
                 .create();
 
         DialogNewBillSellBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_new_bill_sell, null, false);
+        if(taxamount.isEmpty()){
+            taxamount="0";
+        }
         taxamount = ((Double.parseDouble(taxamount) * total) / 100) + "";
 
         binding.spcoupon.setAdapter(spinnerDiscountAdapter);
         binding.spsuctomer.setAdapter(spinnercustomerAdapter);
         binding.setDate(System.currentTimeMillis());
         binding.tvTotal.setText((total) + "");
-        binding.tvstay.setText((total + Double.parseDouble(taxamount) - discount-paid) + "");
+        binding.tvstay.setText((total + Double.parseDouble(taxamount) - discount - paid) + "");
         binding.tvdiscount.setText(discount + "");
         binding.tvtax.setText(taxamount);
         binding.btnaddcustomer.setOnClickListener(new View.OnClickListener() {
@@ -501,7 +531,7 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
                     } else {
                         discount = singleDiscountModels.get(i).getValue();
                     }
-                    binding.tvstay.setText((total + Double.parseDouble(taxamount) - discount-paid) + "");
+                    binding.tvstay.setText((total + Double.parseDouble(taxamount) - discount - paid) + "");
                     binding.tvdiscount.setText(discount + "");
 
                 }
@@ -519,6 +549,7 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
                 createOrderModel.setName(name);
                 String date[];
                 date = binding.tvdate.getText().toString().split("/");
+                createOrderModel.setWarehouse_id(singleProductModelList.get(0).getStockid() + "");
 
                 createOrderModel.setDate(date[2] + "-" + date[1] + "-" + date[0]);
                 createOrderModel.setTotal_price(Math.round(total + Double.parseDouble(taxamount) - discount));
@@ -573,16 +604,16 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
             public void afterTextChanged(Editable editable) {
                 try {
                     paid = Double.parseDouble(editable.toString());
-Log.e("ldkkd",(total + Double.parseDouble(taxamount) - discount)+" "+paid);
+                    Log.e("ldkkd", (total + Double.parseDouble(taxamount) - discount) + " " + paid);
                     if (paid <= (total + Double.parseDouble(taxamount) - discount)) {
-                        Log.e("ldkkd",(total + Double.parseDouble(taxamount) - discount)+" "+paid);
+                        Log.e("ldkkd", (total + Double.parseDouble(taxamount) - discount) + " " + paid);
 
-                        binding.tvstay.setText((total + Double.parseDouble(taxamount) - discount-paid) + "");
+                        binding.tvstay.setText((total + Double.parseDouble(taxamount) - discount - paid) + "");
                     } else {
                         binding.edtpaid.setError(getResources().getString(R.string.paid_must_small_or));
                     }
                 } catch (Exception e) {
-                    binding.tvstay.setText((total + Double.parseDouble(taxamount) - discount-paid) + "");
+                    binding.tvstay.setText((total + Double.parseDouble(taxamount) - discount - paid) + "");
                 }
             }
         });
@@ -673,4 +704,13 @@ Log.e("ldkkd",(total + Double.parseDouble(taxamount) - discount)+" "+paid);
 
     }
 
+    @Override
+    public void onSuccess(StockDataModel model) {
+
+        Log.e("dlldldl", model.getData().size() + "");
+        stockModelList.addAll(model.getData());
+        spinnerStockAdapter = new SpinnerStockAdapter(stockModelList, this);
+        binding.spStock.setAdapter(spinnerStockAdapter);
+
+    }
 }
