@@ -72,6 +72,8 @@ public class AddStockActivity extends AppCompatActivity implements AddStockActiv
         if (model != null) {
             addStockModel.setId(model.getId() + "");
             addStockModel.setName(model.getAr_title());
+            binding.tv.setText(getString(R.string.update));
+            binding.btnConfirm.setText(getString(R.string.update));
         }
         binding.setModel(addStockModel);
 

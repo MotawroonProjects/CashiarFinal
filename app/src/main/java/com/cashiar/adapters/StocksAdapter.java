@@ -14,6 +14,7 @@ import com.cashiar.R;
 import com.cashiar.databinding.StockRowBinding;
 import com.cashiar.models.StockModel;
 import com.cashiar.ui.activity_categories.CategoriesActivity;
+import com.cashiar.ui.activity_stocks.StocksActivity;
 
 import java.util.List;
 
@@ -21,10 +22,12 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyHolder> 
 
     private List<StockModel> list;
     private Context context;
+    private StocksActivity activity;
 
     public StocksAdapter(Context context, List<StockModel> list) {
         this.list = list;
         this.context = context;
+        activity = (StocksActivity) context;
     }
 
     @NonNull
@@ -37,6 +40,9 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.binding.setModel(list.get(position));
+        holder.itemView.setOnClickListener(v -> {
+            activity.editStock(list.get(holder.getAdapterPosition()));
+        });
 
     }
 
@@ -46,7 +52,7 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyHolder> 
     }
 
 
-    public class MyHolder extends RecyclerView.ViewHolder {
+    public static class MyHolder extends RecyclerView.ViewHolder {
         StockRowBinding binding;
 
         public MyHolder(@NonNull StockRowBinding binding) {
