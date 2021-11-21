@@ -5,43 +5,48 @@ import java.io.Serializable;
 public class StockModel implements Serializable {
 
     private int id;
-    private String title;
-    private String image;
-    private String price;
-    private String currency;
-    private String number_of_days;
-    private String number_of_freeUsed;
-    private String is_free;
+    private String ar_title;
+    private String en_title;
+    private String ar_desc;
+    private String en_desc;
+    private String is_basic;
+    private int added_by_id;
+    private String created_at;
+    private String updated_at;
 
     public int getId() {
         return id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getAr_title() {
+        return ar_title;
     }
 
-    public String getImage() {
-        return image;
+    public String getEn_title() {
+        return en_title;
     }
 
-    public String getPrice() {
-        return price;
+    public String getAr_desc() {
+        return ar_desc;
     }
 
-    public String getCurrency() {
-        return currency;
+    public String getEn_desc() {
+        return en_desc;
     }
 
-    public String getNumber_of_days() {
-        return number_of_days;
+    public String getIs_basic() {
+        return is_basic;
     }
 
-    public String getNumber_of_freeUsed() {
-        return number_of_freeUsed;
+    public int getAdded_by_id() {
+        return added_by_id;
     }
 
-    public String getIs_free() {
-        return is_free;
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public String getUpdated_at() {
+        return updated_at;
     }
 }
