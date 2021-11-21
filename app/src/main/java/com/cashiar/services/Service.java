@@ -837,9 +837,9 @@ public interface Service {
                             @Field("sale_id") int sale_id
 
     );
-
-    @GET("api/singleSaleOrder")
-    Call<StockDataModel> getStocks(@Header("Authorization") String Authorization
+    @GET("api/searchWarehouses")
+    Call<StockDataModel> getStocks(
+            @Header("Authorization") String Authorization
 
     );
 
@@ -849,6 +849,15 @@ public interface Service {
                                 @Field("title") String title
 
     );
+
+
+    @FormUrlEncoded
+    @POST("api/getProductsByWarehouse")
+    Call<AllProductsModel> getproductsInStock(
+            @Header("Authorization") String Authorization,
+            @Field("search_keyWord") String search_keyWord,
+            @Field("warehouse_id") String warehouse_id);
+
 
     @FormUrlEncoded
     @POST("api/editWarehouse")
