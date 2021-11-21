@@ -16,14 +16,13 @@ import com.cashiar.models.AllProductsModel;
 import com.cashiar.models.AllPurhcasesBillReportModel;
 import com.cashiar.models.AllSalesBillReportModel;
 import com.cashiar.models.AllSalesPurshReportModel;
+import com.cashiar.models.StockDataModel;
 import com.cashiar.models.BillModel;
 import com.cashiar.models.CreateBuyOrderModel;
 import com.cashiar.models.CreateOrderModel;
 import com.cashiar.models.PackageResponse;
 import com.cashiar.models.PlaceGeocodeData;
 import com.cashiar.models.PlaceMapDetailsData;
-import com.cashiar.models.SalesBillReportsModel;
-import com.cashiar.models.SalesPurchReportsModel;
 import com.cashiar.models.SettingModel;
 import com.cashiar.models.SingleProductDataModel;
 import com.cashiar.models.SingleProductModel;
@@ -826,6 +825,11 @@ public interface Service {
     Call<BillModel> getBill(
             @Header("Authorization") String Authorization,
             @Field("sale_id") int sale_id
+
+    );
+    @GET("api/singleSaleOrder")
+    Call<StockDataModel> getStocks(
+            @Header("Authorization") String Authorization
 
     );
 }

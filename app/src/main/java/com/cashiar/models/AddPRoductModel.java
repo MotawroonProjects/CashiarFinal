@@ -30,7 +30,8 @@ public class AddPRoductModel extends BaseObservable {
 
     public boolean isDataValid(Context context) {
         if (!name.trim().isEmpty() && !department.trim().isEmpty() && !sellBy.trim().isEmpty() && !price.trim().isEmpty()
-                && !cost.trim().isEmpty() && !stock.trim().isEmpty() && !showinsell.trim().isEmpty() && ((stock.equals("out_stock")) || (stock.equals("in_stock") && !stokamount.trim().isEmpty()))
+                && !cost.trim().isEmpty() && !stock.trim().isEmpty() && !showinsell.trim().isEmpty()
+                //&& ((stock.equals("out_stock")) || (stock.equals("in_stock") && !stokamount.trim().isEmpty()))
                 && ((((showinsell.equals("color") && !color.trim().isEmpty()))) || (showinsell.equals("image") && !image_url.trim().isEmpty()))
         ) {
 
@@ -47,15 +48,15 @@ public class AddPRoductModel extends BaseObservable {
                 Toast.makeText(context, context.getResources().getString(R.string.ch_sell), Toast.LENGTH_LONG).show();
 
             }
-            if (stock.trim().isEmpty()) {
-                Toast.makeText(context, context.getResources().getString(R.string.ch_stoke), Toast.LENGTH_LONG).show();
-
-            } else {
-
-                if (stock.equals("in_stock") && !stokamount.trim().isEmpty()) {
-                    error_stok.set(context.getResources().getString(R.string.field_required));
-                }
-            }
+//            if (stock.trim().isEmpty()) {
+//                Toast.makeText(context, context.getResources().getString(R.string.ch_stoke), Toast.LENGTH_LONG).show();
+//
+//            } else {
+//
+//                if (stock.equals("in_stock") && !stokamount.trim().isEmpty()) {
+//                    error_stok.set(context.getResources().getString(R.string.field_required));
+//                }
+//            }
             if (showinsell.trim().isEmpty()) {
 
             } else {

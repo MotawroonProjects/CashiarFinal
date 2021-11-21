@@ -330,6 +330,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:text="@string/inventory"
+                        android:visibility="gone"
                         android:textColor="@color/deptext"
                         android:textSize="@dimen/_10sdp" />
 
@@ -338,6 +339,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_7sdp"
                         android:orientation="vertical"
+                        android:visibility="gone"
                         android:weightSum="2">
 
 
@@ -368,6 +370,7 @@
                         android:layout_height="@dimen/_40sdp"
                         android:background="@drawable/rounded_white"
                         android:hint="40"
+                        android:visibility="gone"
                         android:paddingStart="@dimen/_7sdp"
                         android:paddingEnd="@dimen/_7sdp"
                         android:text="@={model.stokamount}"
