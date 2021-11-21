@@ -245,5 +245,9 @@
     <string name="eror">خطأ فى خطوات الدفع</string>
     <string name="package_is_free">الحزمة مجانية وتم تحديث تاريخ انتهاء المستخدم</string>
     <string name="suce_packge">تم تحديث الباقه بنجاح</string>
-    <string name="out_of_stock">This Product is Empty</string>
+    <string name="out_of_stock">هذا المنتج فارغ</string>
+    <string name="add_stock">إضافة مخزن</string>
+    <string name="stock_name">إسم المخزن</string>
+    <string name="stocks">المخازن</string>
+    <string name="no_stocks_to_show">لا يوجد مخازن لعرضها</string>
 </resources>

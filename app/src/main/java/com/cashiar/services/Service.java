@@ -536,6 +536,7 @@ public interface Service {
 
 
     );
+
     @FormUrlEncoded
     @POST("api/editSupplier")
     Call<ResponseBody> updatesuppliers(
@@ -548,8 +549,8 @@ public interface Service {
             @Field("supplier_id") String supplier_id
 
 
-
     );
+
     @FormUrlEncoded
     @POST("api/purchaseCollectionReport")
     Call<SettingModel> getpurchase(
@@ -559,8 +560,8 @@ public interface Service {
             @Field("to") String to
 
 
-
     );
+
     @FormUrlEncoded
     @POST("api/salesCollectionReport")
     Call<SettingModel> getsales(
@@ -570,8 +571,8 @@ public interface Service {
             @Field("to") String to
 
 
-
     );
+
     @GET("api/earningsReport")
     Call<SettingModel> getearnproduct(
             @Header("Authorization") String Authorization
@@ -585,14 +586,17 @@ public interface Service {
 
 
     );
+
     @GET("api/mostProductSales")
     Call<AllProductsModel> getmostsaleproduct(
             @Header("Authorization") String Authorization
 
 
     );
+
     @GET("api/app/info")
     Call<SettingModel> getSetting();
+
     @GET("api/detailed-sales-report")
     Call<AllSalesPurshReportModel> getdetialedsalesReport(
             @Header("Authorization") String Authorization,
@@ -602,8 +606,8 @@ public interface Service {
             @Query("to_date") String to_date
 
 
-
     );
+
     @GET("api/an-aggregate-sale-report")
     Call<AllSalesPurshReportModel> getAggreatesalesReport(
             @Header("Authorization") String Authorization,
@@ -613,8 +617,8 @@ public interface Service {
             @Query("to_date") String to_date
 
 
-
     );
+
     @GET("api/report-of-unpaid-sales-invoices")
     Call<AllSalesBillReportModel> getUnpaidsalesInvoicesReport(
             @Header("Authorization") String Authorization,
@@ -624,8 +628,8 @@ public interface Service {
             @Query("to_date") String to_date
 
 
-
     );
+
     @GET("api/sales-invoices")
     Call<AllSalesBillReportModel> getBillsalesReport(
             @Header("Authorization") String Authorization,
@@ -634,6 +638,7 @@ public interface Service {
             @Query("from_date") String from_date,
             @Query("to_date") String to_date
     );
+
     @GET("api/detailed-earnings-report")
     Call<AllSalesPurshReportModel> getdetialedEarningReport(
             @Header("Authorization") String Authorization,
@@ -643,8 +648,8 @@ public interface Service {
             @Query("to_date") String to_date
 
 
-
     );
+
     @GET("api/aggregate-earnings-report")
     Call<AggreateEarnReportsModel> getAggreateEarningReport(
             @Header("Authorization") String Authorization,
@@ -653,8 +658,8 @@ public interface Service {
             @Query("to_date") String to_date
 
 
-
     );
+
     @GET("api/report-of-remaining-amounts-customers")
     Call<AllAmountLeftOverReportModel> getAmountLeftOverCustomerReport(
             @Header("Authorization") String Authorization,
@@ -664,8 +669,8 @@ public interface Service {
             @Query("to_date") String to_date
 
 
-
     );
+
     @GET("api/client-bills")
     Call<AllBillCustomerReportModel> getBillCustomerReport(
             @Header("Authorization") String Authorization,
@@ -676,8 +681,8 @@ public interface Service {
             @Query("search_name") String search_name
 
 
-
     );
+
     @GET("api/report-products-sold-customer")
     Call<AllSalesPurshReportModel> getProductSoldCustomeReport(
             @Header("Authorization") String Authorization,
@@ -688,6 +693,7 @@ public interface Service {
             @Query("search_name") String search_name
 
     );
+
     @GET("api/report-remaining-amounts-suppliers")
     Call<AllAmountLeftOverReportModel> getAmountLeftOverSupplierReport(
             @Header("Authorization") String Authorization,
@@ -697,8 +703,8 @@ public interface Service {
             @Query("to_date") String to_date
 
 
-
     );
+
     @GET("api/supplier-invoices")
     Call<AllBillCustomerReportModel> getBillSupplierReport(
             @Header("Authorization") String Authorization,
@@ -709,8 +715,8 @@ public interface Service {
             @Query("search_name") String search_name
 
 
-
     );
+
     @GET("api/report-products-purchased-supplier")
     Call<AllSalesPurshReportModel> getProductPurchasesSupplierReport(
             @Header("Authorization") String Authorization,
@@ -721,6 +727,7 @@ public interface Service {
             @Query("search_name") String search_name
 
     );
+
     @GET("api/detailed-purchase-report")
     Call<AllSalesPurshReportModel> getdetialedpurchasesReport(
             @Header("Authorization") String Authorization,
@@ -730,8 +737,8 @@ public interface Service {
             @Query("to_date") String to_date
 
 
-
     );
+
     @GET("api/an-aggregate-purchase-report")
     Call<AllSalesPurshReportModel> getAggreatepurchasesReport(
             @Header("Authorization") String Authorization,
@@ -741,8 +748,8 @@ public interface Service {
             @Query("to_date") String to_date
 
 
-
     );
+
     @GET("api/purchase-invoices")
     Call<AllPurhcasesBillReportModel> getBillpurchasesReport(
             @Header("Authorization") String Authorization,
@@ -751,6 +758,7 @@ public interface Service {
             @Query("from_date") String from_date,
             @Query("to_date") String to_date
     );
+
     @GET("api/report-of-unpaid-purchase-invoices")
     Call<AllPurhcasesBillReportModel> getUnpaidpurchasesInvoicesReport(
             @Header("Authorization") String Authorization,
@@ -760,8 +768,8 @@ public interface Service {
             @Query("to_date") String to_date
 
 
-
     );
+
     @GET("api/movement-purchase-price-change-item")
     Call<AllSalesPurshReportModel> getmovement_purchase_price_change_itemReport(
             @Header("Authorization") String Authorization,
@@ -771,8 +779,8 @@ public interface Service {
             @Query("to_date") String to_date
 
 
-
     );
+
     @GET("api/detailed-expense-report")
     Call<AllExpensesModel> getdetialedexpenseReport(
             @Header("Authorization") String Authorization,
@@ -782,8 +790,8 @@ public interface Service {
             @Query("to_date") String to_date
 
 
-
     );
+
     @GET("api/outline-expense-report")
     Call<AllExpensesModel> getaggerateexpenseReport(
             @Header("Authorization") String Authorization,
@@ -793,10 +801,11 @@ public interface Service {
             @Query("to_date") String to_date
 
 
-
     );
+
     @GET("api/GetPackages")
     Call<SubscriptionDataModel> getSubscription();
+
     @FormUrlEncoded
     @POST("api/PayBill")
     Call<UnpaidBillSaleReportModel> paidunpaidsaleinvoice(
@@ -804,8 +813,8 @@ public interface Service {
             @Field("amount") String amount
 
 
-
     );
+
     @FormUrlEncoded
     @POST("api/getLinkToPay")
     Call<PackageResponse> buyPackage(
@@ -813,6 +822,7 @@ public interface Service {
             @Field("package_id") int package_id
 
     );
+
     @FormUrlEncoded
     @POST("api/paymentIsSuccess")
     Call<PackageResponse> confirmPackage(
@@ -820,16 +830,31 @@ public interface Service {
             @Field("package_id") int package_id
 
     );
+
     @FormUrlEncoded
     @POST("api/singleSaleOrder")
-    Call<BillModel> getBill(
-            @Header("Authorization") String Authorization,
-            @Field("sale_id") int sale_id
+    Call<BillModel> getBill(@Header("Authorization") String Authorization,
+                            @Field("sale_id") int sale_id
 
     );
+
     @GET("api/singleSaleOrder")
-    Call<StockDataModel> getStocks(
-            @Header("Authorization") String Authorization
+    Call<StockDataModel> getStocks(@Header("Authorization") String Authorization
 
     );
+
+    @FormUrlEncoded
+    @POST("api/addNewWarehouse")
+    Call<ResponseBody> addStock(@Header("Authorization") String Authorization,
+                                @Field("title") String title
+
+    );
+
+    @FormUrlEncoded
+    @POST("api/editWarehouse")
+    Call<ResponseBody> updateStock(@Header("Authorization") String Authorization,
+                                   @Field("warehouse_id") String warehouse_id,
+                                   @Field("title") String title
+    );
+
 }

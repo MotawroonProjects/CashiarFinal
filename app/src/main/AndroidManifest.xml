@@ -25,6 +25,12 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
+        <activity
+            android:name=".ui.activity_stocks.StocksActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activity_add_stock.AddStockActivity"
+            android:exported="true" />
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -70,7 +76,6 @@
             android:name=".ui.activity_inventory_change_purchases_price_for_an_item_report.InventoryChangePurchasesPriceForanItemReportActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
         <activity
             android:name=".ui.activity_aggerate_purchases_report.AggreatePurchasesReportActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
@@ -175,7 +180,6 @@
             android:name=".ui.activity_login.LoginActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
         <activity
             android:name=".ui.activity_confirm_code.ConfirmCodeActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
@@ -234,7 +238,6 @@
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-
             android:name=".ui.activity_add_product.AddProductActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -246,12 +249,10 @@
             android:name=".ui.activity_products.ProductsActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
         <activity
             android:name=".ui.activity_expenses.ExpensesActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
         <activity
             android:name=".ui.activity_add_expenses.AddExpensesActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
@@ -260,7 +261,6 @@
             android:name=".ui.Activity_add_accout.AddAccountActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
         <activity
             android:name=".ui.activity_home.HomeActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"

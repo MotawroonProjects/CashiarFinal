@@ -245,4 +245,8 @@
     <string name="package_is_free">Package Is Free And User Finished Date Had Updated</string>
     <string name="suce_packge">success package updating</string>
     <string name="out_of_stock">This Product is Empty</string>
+    <string name="add_stock">Add stock</string>
+    <string name="stock_name">Stock name</string>
+    <string name="stocks">Stocks</string>
+    <string name="no_stocks_to_show">No stocks to show</string>
 </resources>
