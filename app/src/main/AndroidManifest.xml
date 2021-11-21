@@ -26,6 +26,9 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
         <activity
+            android:name=".ui.activity_stock_balance.StockBalanceActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.activity_stocks.StocksActivity"
             android:exported="true" />
         <activity
