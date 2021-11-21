@@ -43,6 +43,7 @@ import com.cashiar.ui.activity_expenses.ExpensesActivity;
 import com.cashiar.ui.activity_login.LoginActivity;
 import com.cashiar.ui.activity_new_bill_of_purchases.NewBillOfPurchasesActivity;
 import com.cashiar.ui.activity_new_bill_of_sale.NewBillOfSellActivity;
+import com.cashiar.ui.activity_premission_stock.PremissionStockActivity;
 import com.cashiar.ui.activity_products.ProductsActivity;
 import com.cashiar.ui.activity_products_buy.ProductsBuyActivity;
 import com.cashiar.ui.activity_products_sell.ProductsSellActivity;
@@ -128,6 +129,17 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView,
 
                 if (persearch != null && persearch.contains(5)) {
                     presenter.customers();
+                } else {
+                    Toast.makeText(HomeActivity.this, getResources().getString(R.string.dont_have_permission), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        binding.llStockPremission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (persearch != null && persearch.contains(5)) {
+                    presenter.premissionStock();
                 } else {
                     Toast.makeText(HomeActivity.this, getResources().getString(R.string.dont_have_permission), Toast.LENGTH_LONG).show();
                 }
@@ -491,7 +503,11 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView,
         Intent intent = new Intent(this, CustomersActivity.class);
         startActivity(intent);
     }
-
+    @Override
+    public void onPremissionStock() {
+        Intent intent = new Intent(this, PremissionStockActivity.class);
+        startActivity(intent);
+    }
     @Override
     public void onSuppliers() {
         Intent intent = new Intent(this, SuppliersActivity.class);

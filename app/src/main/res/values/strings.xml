@@ -253,4 +253,6 @@
     <string name="add">Add</string>
     <string name="product">Product</string>
     <string name="dont_add">You Can,t Add From  More Than One Stock</string>
+    <string name="stock_premission">صلاحيات المخازن</string>
+    <string name="add">add</string>
 </resources>

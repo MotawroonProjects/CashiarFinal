@@ -254,4 +254,6 @@
     <string name="store_stock">رصيد المخزن</string>
     <string name="add">إضافة</string>
     <string name="product">المنتج</string>
+    <string name="stock_premission">صلاحيات المخازن</string>
+    <string name="add">add</string>
 </resources>

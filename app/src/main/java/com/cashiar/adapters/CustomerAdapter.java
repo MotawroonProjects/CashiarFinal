@@ -1,5 +1,6 @@
 package com.cashiar.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.cashiar.R;
 import com.cashiar.databinding.CustomerRowBinding;
 import com.cashiar.models.SingleCustomerSuplliersModel;
 import com.cashiar.ui.activity_customers.CustomersActivity;
+import com.cashiar.ui.activity_premission_stock.PremissionStockActivity;
 import com.cashiar.ui.activity_suppliers.SuppliersActivity;
 
 import java.util.List;
@@ -35,21 +37,23 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomerViewholder holder, int position) {
-holder.binding.setModel(list.get(position));
-holder.itemView.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        if(context instanceof CustomersActivity){
-            CustomersActivity customersActivity=(CustomersActivity)context;
-            customersActivity.update(list.get(position));
-        }
-        else   if(context instanceof SuppliersActivity){
-            SuppliersActivity customersActivity=(SuppliersActivity)context;
-            customersActivity.update(list.get(position));
-        }
-    }
-});
+    public void onBindViewHolder(@NonNull CustomerViewholder holder, @SuppressLint("RecyclerView") int position) {
+        holder.binding.setModel(list.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (context instanceof CustomersActivity) {
+                    CustomersActivity customersActivity = (CustomersActivity) context;
+                    customersActivity.update(list.get(position));
+                } else if (context instanceof SuppliersActivity) {
+                    SuppliersActivity customersActivity = (SuppliersActivity) context;
+                    customersActivity.update(list.get(position));
+                }else if (context instanceof PremissionStockActivity) {
+                    PremissionStockActivity premissionStockActivity = (PremissionStockActivity) context;
+                    premissionStockActivity.onitemselect(list.get(position));
+                }
+            }
+        });
     }
 
     @Override

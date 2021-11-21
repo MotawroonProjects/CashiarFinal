@@ -8,6 +8,7 @@ public interface HomeActivityView {
     void onFinished();
     void onAddproducts();
     void onCustomers();
+    void onPremissionStock();
     void onSuppliers();
 
     void onAddbillSell();

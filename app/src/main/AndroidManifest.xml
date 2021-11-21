@@ -38,7 +38,14 @@
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
-
+        <activity
+            android:name=".ui.activity_add_delete_premission.AddDeletePremissionActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".ui.activity_premission_stock.PremissionStockActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.activity_web_view.WebViewActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"

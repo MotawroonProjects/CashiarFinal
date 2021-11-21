@@ -870,4 +870,14 @@ public interface Service {
     Call<ResponseBody> deleteStock(@Header("Authorization") String Authorization,
                                    @Field("warehouse_id") String warehouse_id);
 
+    @FormUrlEncoded
+    @POST("api/addPermissionOfMultiWarehousesToSingleUser")
+    Call<ResponseBody> addPremission(
+            @Header("Authorization") String Authorization,
+            @Field("user_id") String user_id,
+            @Field("warehouses[]") List<Integer> warehouses
+
+
+    );
+
 }

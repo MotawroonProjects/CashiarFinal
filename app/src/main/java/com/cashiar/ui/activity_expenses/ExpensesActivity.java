@@ -110,7 +110,7 @@ public class ExpensesActivity extends AppCompatActivity implements ExpensesActiv
                 }
             }
         });
-//        binding.llMap.setOnTouchListener(new View.OnTouchListener() {
+    //        binding.llMap.setOnTouchListener(new View.OnTouchListener() {
 //            @Override
 //            public boolean onTouch(View view, MotionEvent motionEvent) {
 //                long duration = motionEvent.getEventTime() - motionEvent.getDownTime();

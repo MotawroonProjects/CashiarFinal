@@ -43,8 +43,8 @@
                     android:layout_gravity="end"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:visibility="gone"
-                    android:background="@drawable/circle_primary">
+                    android:background="@drawable/circle_primary"
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="24dp"
@@ -71,14 +71,14 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        >
+                        android:layout_height="wrap_content">
+
                         <FrameLayout
                             android:id="@+id/fraddproduct"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="@dimen/_120sdp"
-                            android:layout_margin="@dimen/_7sdp">
+                            android:layout_margin="@dimen/_7sdp"
+                            android:layout_weight="1">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -111,12 +111,13 @@
                                     android:textSize="@dimen/_10sdp" />
                             </LinearLayout>
                         </FrameLayout>
+
                         <FrameLayout
                             android:id="@+id/flStock"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="@dimen/_120sdp"
-                            android:layout_margin="@dimen/_7sdp">
+                            android:layout_margin="@dimen/_7sdp"
+                            android:layout_weight="1">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -414,596 +415,630 @@
             android:layout_gravity="start"
 
             >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
-        <ImageView
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="@dimen/_90sdp"
-            android:layout_gravity="center"
-            android:src="@drawable/logo"
-            android:tint="@color/white"
-            />
-    </FrameLayout>
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:background="@color/white"
-    android:fillViewport="true">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/ll_sell"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_trading"
-                android:tint="@color/depic"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/bill_sell"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/ll_buy"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_expenses"
-                android:tint="@color/depic"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/bill_buy"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/ll_supliers"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_supplier"
-                android:tint="@color/depic"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/suppliers"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/ll_customer"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_customer"
-                android:tint="@color/depic"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/customers"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/ll_expenses"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_analysis"
-                android:tint="@color/depic"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/expenses"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/depic"
-            android:layout_marginTop="@dimen/_8sdp"
-            />
-        <LinearLayout
-            android:id="@+id/ll_profile"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_user"
-                android:tint="@color/depic"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/profile"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/ll_backesale"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_discount"
-                android:tint="@color/depic"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/sales_returns"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/ll_backebuy"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_discount"
-                android:tint="@color/depic"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/returned_purchases"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-
-                <LinearLayout
-            android:id="@+id/ll_addcashier"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_expenses"
-                android:tint="@color/depic"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/add_cashier"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_share"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="97dp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_share"
-                android:tint="@color/depic"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/share"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/llcontactus"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="97dp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_phone"
-                android:tint="@color/depic"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/contactus"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_subscribe"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/subscription"
-                android:tint="@color/depic"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/activate_the_application"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_lang"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_lang"
-                android:tint="@color/depic"
-                android:rotation="-90"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/lanuage_setting"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_logout"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            >
-
-
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center_vertical"
-                android:clickable="false"
-                android:longClickable="false"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_logout"
-                android:tint="@color/depic"
-                android:rotation="-90"
-
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:gravity="start|center"
-                android:longClickable="false"
-                android:singleLine="true"
-                android:text="@string/logout"
-                android:textColor="@color/deptext"
-                android:textSize="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingRight="@dimen/_8sdp"
-
-                />
-
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
-</LinearLayout>
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary">
+
+                    <ImageView
+                        android:layout_width="@dimen/_90sdp"
+                        android:layout_height="@dimen/_90sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/logo"
+                        android:tint="@color/white" />
+                </FrameLayout>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:fillViewport="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_sell"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/ic_trading"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/bill_sell"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_buy"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/ic_expenses"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/bill_buy"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_supliers"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/ic_supplier"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/suppliers"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_customer"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/ic_customer"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/customers"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_expenses"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/ic_analysis"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/expenses"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:background="@color/depic" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_profile"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/ic_user"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/profile"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_backesale"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/ic_discount"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/sales_returns"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_backebuy"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/ic_discount"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/returned_purchases"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_addcashier"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/ic_expenses"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/add_cashier"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/ll_stock_premission"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/ic_expenses"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/stock_premission"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/ll_share"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="97dp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/ic_share"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/share"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llcontactus"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="97dp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/ic_phone"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/contactus"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_subscribe"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/subscription"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/activate_the_application"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_lang"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:rotation="-90"
+                                android:src="@drawable/ic_lang"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/lanuage_setting"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_logout"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center_vertical"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="@dimen/_10sdp"
+                                android:rotation="-90"
+                                android:src="@drawable/ic_logout"
+                                android:tint="@color/depic"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="start|center"
+                                android:longClickable="false"
+                                android:paddingLeft="@dimen/_8sdp"
+                                android:paddingRight="@dimen/_8sdp"
+                                android:singleLine="true"
+                                android:text="@string/logout"
+                                android:textColor="@color/deptext"
+                                android:textSize="@dimen/_10sdp"
+
+                                />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
 

@@ -69,6 +69,9 @@ public class ActivityHomePresenter {
     public void customers() {
         view.onCustomers();
     }
+    public void premissionStock() {
+        view.onPremissionStock();
+    }
     public void suppliers() {
         view.onSuppliers();
     }
