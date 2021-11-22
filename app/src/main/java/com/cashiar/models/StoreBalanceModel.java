@@ -21,6 +21,7 @@ public class StoreBalanceModel implements Serializable {
         this.product_name = product_name;
     }
 
+
     public String getWarehouse_id() {
         return warehouse_id;
     }
