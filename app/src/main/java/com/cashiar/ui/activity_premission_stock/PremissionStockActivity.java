@@ -4,27 +4,19 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.cashiar.R;
-import com.cashiar.adapters.CustomerAdapter;
-import com.cashiar.adapters.DelteCustomerSwipe;
-import com.cashiar.adapters.SliderAdapter;
-import com.cashiar.databinding.ActivityCustomersBinding;
+import com.cashiar.adapters.UsersAdapter;
 import com.cashiar.databinding.ActivityPremissionStockBinding;
 import com.cashiar.language.Language;
-import com.cashiar.models.AllCustomersModel;
-import com.cashiar.models.SingleCustomerSuplliersModel;
 import com.cashiar.models.Slider_Model;
+import com.cashiar.models.UserDataModel;
 import com.cashiar.models.UserModel;
 import com.cashiar.mvp.activity_customers_mvp.PremissionStockActivityView;
 import com.cashiar.mvp.activity_premission_stock_mvp.ActivityPremissionStockPresenter;
@@ -35,8 +27,6 @@ import com.cashiar.ui.activity_add_delete_premission.AddDeletePremissionActivity
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import io.paperdb.Paper;
 
@@ -49,8 +39,8 @@ public class PremissionStockActivity extends AppCompatActivity implements Premis
     private String query;
     private Preferences preferences;
     private UserModel userModel;
-    private List<SingleCustomerSuplliersModel> allCustomersModels;
-    private CustomerAdapter customerAdapter;
+    private List<UserModel> userModelList;
+    private UsersAdapter usersAdapter;
     private ProgressDialog dialog2;
     private UserModel body;
     private int pos;
@@ -70,7 +60,7 @@ public class PremissionStockActivity extends AppCompatActivity implements Premis
 
 
     private void initView() {
-        allCustomersModels = new ArrayList<>();
+        userModelList = new ArrayList<>();
         preferences = Preferences.getInstance();
         userModel = preferences.getUserData(this);
         Paper.init(this);
@@ -78,17 +68,17 @@ public class PremissionStockActivity extends AppCompatActivity implements Premis
         binding.setLang(lang);
         presenter = new ActivityPremissionStockPresenter(this, this);
         presenter.getprofile(userModel);
-        customerAdapter = new CustomerAdapter(this, allCustomersModels);
+        usersAdapter = new UsersAdapter(this, userModelList);
 
         binding.recView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recView.setAdapter(customerAdapter);
+        binding.recView.setAdapter(usersAdapter);
 
         binding.llBack.setOnClickListener(view -> {
             finish();
         });
 
 
-        presenter.getCustomers(userModel, query);
+        presenter.getUsers(userModel);
 
     }
 
@@ -118,7 +108,7 @@ public class PremissionStockActivity extends AppCompatActivity implements Premis
 
 
     @Override
-    public void onSuccess(AllCustomersModel model) {
+    public void onSuccess(UserDataModel model) {
 
         //Log.e("dlldldl",model.getData().size()+"");
         if (model.getData() == null || model.getData().size() == 0) {
@@ -127,9 +117,9 @@ public class PremissionStockActivity extends AppCompatActivity implements Premis
             binding.llNoNotification.setVisibility(View.GONE);
 
         }
-        allCustomersModels.clear();
-        allCustomersModels.addAll(model.getData());
-        customerAdapter.notifyDataSetChanged();
+        userModelList.clear();
+        userModelList.addAll(model.getData());
+        usersAdapter.notifyDataSetChanged();
 
     }
 
@@ -144,14 +134,7 @@ public class PremissionStockActivity extends AppCompatActivity implements Premis
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            query = "";
-            presenter.getCustomers(userModel, query);
-        }
-    }
+
 
     @Override
     public void onProgressSliderShow() {
@@ -168,12 +151,7 @@ public class PremissionStockActivity extends AppCompatActivity implements Premis
     }
 
 
-    public void update(SingleCustomerSuplliersModel singleCustomerSuplliersModel) {
-        Intent intent = new Intent(PremissionStockActivity.this, AddCustomerActivity.class);
-        intent.putExtra("data", singleCustomerSuplliersModel);
-        intent.putExtra("type", "update");
-        startActivity(intent);
-    }
+
 
 
 
@@ -201,21 +179,15 @@ public class PremissionStockActivity extends AppCompatActivity implements Premis
 
     @Override
     public void onSuccessDelete() {
-        allCustomersModels.remove(pos);
-        customerAdapter.notifyDataSetChanged();
+        userModelList.remove(pos);
+        usersAdapter.notifyDataSetChanged();
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        presenter.getprofile(userModel);
-        presenter.getCustomers(userModel,query);
-    }
 
-    public void onitemselect(SingleCustomerSuplliersModel singleCustomerSuplliersModel) {
+    public void onitemselect(UserModel userModel, String type) {
         Intent intent = new Intent(PremissionStockActivity.this, AddDeletePremissionActivity.class);
-        intent.putExtra("data", singleCustomerSuplliersModel);
-        intent.putExtra("type", "update");
+        intent.putExtra("data", userModel);
+        intent.putExtra("type", type);
         startActivity(intent);
     }
 }

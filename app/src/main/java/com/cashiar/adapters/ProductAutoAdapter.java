@@ -59,7 +59,7 @@ public class ProductAutoAdapter extends ArrayAdapter<SingleProductModel> {
                 @Override
                 public void onClick(View v) {
                     if(mContext instanceof NewBillOfSellActivity){
-                        if(singleProductModel.getStock_amount()>0) {
+                        if(singleProductModel.getwarehouse_stock()>0) {
                             NewBillOfSellActivity newBillOfSellActivity = (NewBillOfSellActivity) mContext;
                             newBillOfSellActivity.additem(singleProductModelList.get(position));
                         }

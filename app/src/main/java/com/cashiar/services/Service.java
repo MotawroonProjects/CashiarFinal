@@ -29,6 +29,7 @@ import com.cashiar.models.SingleProductModel;
 import com.cashiar.models.Slider_Model;
 import com.cashiar.models.SubscriptionDataModel;
 import com.cashiar.models.UnpaidBillSaleReportModel;
+import com.cashiar.models.UserDataModel;
 import com.cashiar.models.UserModel;
 
 import java.util.List;
@@ -128,7 +129,7 @@ public interface Service {
             @Field("sku") String sku,
             @Field("barcode_code") String barcode_code,
             @Field("stock_type") String stock_type,
-            @Field("stock_amount") String stock_amount,
+            @Field("warehouse_stock") String warehouse_stock,
             @Field("display_logo_type") String display_logo_type,
             @Field("color_id") String color_id,
             @Field("category_id") String category_id
@@ -147,7 +148,7 @@ public interface Service {
             @Part("sku") RequestBody sku,
             @Part("barcode_code") RequestBody barcode_code,
             @Part("stock_type") RequestBody stock_type,
-            @Part("stock_amount") RequestBody stock_amount,
+            @Part("warehouse_stock") RequestBody warehouse_stock,
             @Part("display_logo_type") RequestBody display_logo_type,
             @Part("color_id") RequestBody color_id,
             @Part("category_id") RequestBody category_id,
@@ -167,7 +168,7 @@ public interface Service {
             @Field("sku") String sku,
             @Field("barcode_code") String barcode_code,
             @Field("stock_type") String stock_type,
-            @Field("stock_amount") String stock_amount,
+            @Field("warehouse_stock") String warehouse_stock,
             @Field("display_logo_type") String display_logo_type,
             @Field("color_id") String color_id,
             @Field("category_id") String category_id,
@@ -187,7 +188,7 @@ public interface Service {
             @Part("sku") RequestBody sku,
             @Part("barcode_code") RequestBody barcode_code,
             @Part("stock_type") RequestBody stock_type,
-            @Part("stock_amount") RequestBody stock_amount,
+            @Part("warehouse_stock") RequestBody warehouse_stock,
             @Part("display_logo_type") RequestBody display_logo_type,
             @Part("color_id") RequestBody color_id,
             @Part("category_id") RequestBody category_id,
@@ -879,5 +880,27 @@ public interface Service {
 
 
     );
+    @FormUrlEncoded
+    @POST("api/removePermissionOfMultiWarehousesToSingleUser")
+    Call<ResponseBody> deletePremission(
+            @Header("Authorization") String Authorization,
+            @Field("user_id") String user_id,
+            @Field("warehouses[]") List<Integer> warehouses
 
+
+    );
+    @GET("api/searchUsers")
+    Call<UserDataModel> getUSers(
+            @Header("Authorization") String Authorization
+
+
+
+            );
+    @FormUrlEncoded
+    @POST("api/getUserWarehouses")
+    Call<StockDataModel> getStocks(@Header("Authorization") String Authorization,
+                                   @Field("user_id") String user_id
+
+
+                                   );
 }

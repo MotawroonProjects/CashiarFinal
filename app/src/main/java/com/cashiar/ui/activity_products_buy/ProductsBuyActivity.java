@@ -239,7 +239,7 @@ public class ProductsBuyActivity extends AppCompatActivity implements ProductsBu
                 itemCartModel.setProduct_id(singleProductModel.getId());
                 itemCartModel.setTitle(singleProductModel.getTitle());
                 itemCartModel.setType(singleProductModel.getProduct_type());
-                itemCartModel.setStock(singleProductModel.getStock_amount());
+                itemCartModel.setStock(singleProductModel.getwarehouse_stock());
                 itemCartModels.add(itemCartModel);
                 createOrderModel.setOrder_details(itemCartModels);
             }
@@ -255,7 +255,7 @@ public class ProductsBuyActivity extends AppCompatActivity implements ProductsBu
             itemCartModel.setProduct_id(singleProductModel.getId());
             itemCartModel.setTitle(singleProductModel.getTitle());
             itemCartModel.setType(singleProductModel.getProduct_type());
-            itemCartModel.setStock(singleProductModel.getStock_amount());
+            itemCartModel.setStock(singleProductModel.getwarehouse_stock());
             itemCartModels.add(itemCartModel);
             createOrderModel.setOrder_details(itemCartModels);
         }

@@ -2,6 +2,7 @@ package com.cashiar.ui.activity_add_delete_premission;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,23 +13,17 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.cashiar.R;
-import com.cashiar.adapters.PermissionAdapter;
+import com.cashiar.adapters.SpinnerUserAdapter;
 import com.cashiar.adapters.StockPermissionAdapter;
-import com.cashiar.databinding.ActivityAddCashierBinding;
 import com.cashiar.databinding.ActivityAddDeletePremissionBinding;
 import com.cashiar.language.Language;
-import com.cashiar.models.AddCashierModel;
 import com.cashiar.models.AddPremissionsModel;
-import com.cashiar.models.AllPermissionModel;
-import com.cashiar.models.SinglePermissionModel;
 import com.cashiar.models.StockDataModel;
 import com.cashiar.models.StockModel;
+import com.cashiar.models.UserDataModel;
 import com.cashiar.models.UserModel;
-import com.cashiar.mvp.activity_add_cashier_mvp.ActivityAddCashierPresenter;
-import com.cashiar.mvp.activity_add_cashier_mvp.AddCashierActivityView;
 import com.cashiar.mvp.activity_add_delete_permission_mvp.ActivityAddDeletePremissionPresenter;
 import com.cashiar.mvp.activity_add_delete_permission_mvp.AddDeletePremissionActivityView;
-import com.cashiar.mvp.activity_add_department_mvp.ActivityAddDepartmentPresenter;
 import com.cashiar.preferences.Preferences;
 import com.cashiar.share.Common;
 
@@ -50,6 +45,11 @@ public class AddDeletePremissionActivity extends AppCompatActivity implements Ad
     private StockPermissionAdapter stockPermissionAdapter;
     private List<Integer> ids;
     private UserModel body;
+    private List<UserModel> userModelList;
+    private SpinnerUserAdapter spinnerUserAdapter;
+    private int userid;
+    private UserModel getUserModel;
+    private String type;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -61,14 +61,24 @@ public class AddDeletePremissionActivity extends AppCompatActivity implements Ad
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_delete_premission);
+        getDataFromIntent();
         initView();
 
     }
 
+    private void getDataFromIntent() {
+        Intent intent = getIntent();
+        if (intent != null) {
+            getUserModel = (UserModel) intent.getSerializableExtra("data");
+            type = intent.getStringExtra("type");
+
+        }
+    }
+
     private void initView() {
+        userModelList = new ArrayList<>();
         ids = new ArrayList<>();
         singlePermissionModelList = new ArrayList<>();
-
         stockPermissionAdapter = new StockPermissionAdapter(this, singlePermissionModelList);
         preferences = Preferences.getInstance();
         userModel = preferences.getUserData(this);
@@ -77,19 +87,57 @@ public class AddDeletePremissionActivity extends AppCompatActivity implements Ad
         binding.recView.setAdapter(stockPermissionAdapter);
         presenter = new ActivityAddDeletePremissionPresenter(this, this);
         presenter.getprofile(userModel);
-        presenter.getStockPremission();
+        if (type.equals("add")) {
+            binding.setTitle(getResources().getString(R.string.add));
+            binding.btnAdd.setVisibility(View.VISIBLE);
+            binding.btnDelete.setVisibility(View.GONE);
+            presenter.getStockPremission(userModel);
+        } else {
+            binding.setTitle(getResources().getString(R.string.delete));
+
+            binding.btnAdd.setVisibility(View.GONE);
+            binding.btnDelete.setVisibility(View.VISIBLE);
+            presenter.getuserStockPremission(userModel, getUserModel.getId());
+        }
+        //presenter.getUsers(userModel);
         binding.btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if (body!=null&&body.getCurrency() != null && body.getTax_amount() != null) {
-                    presenter.checkData(model, userModel);
+                if (body != null && body.getCurrency() != null && body.getTax_amount() != null) {
+                    presenter.checkData(model, userModel, getUserModel.getId(),type);
                 } else {
-                    Common.CreateDialogAlertProfile(AddDeletePremissionActivity.this,getResources().getString(R.string.please_complete_profile_first));
+                    Common.CreateDialogAlertProfile(AddDeletePremissionActivity.this, getResources().getString(R.string.please_complete_profile_first));
 
                 }
             }
         });
+        binding.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (body != null && body.getCurrency() != null && body.getTax_amount() != null) {
+                    presenter.checkData(model, userModel, getUserModel.getId(), type);
+                } else {
+                    Common.CreateDialogAlertProfile(AddDeletePremissionActivity.this, getResources().getString(R.string.please_complete_profile_first));
+
+                }
+            }
+        });
+//        binding.spUsers.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//
+//                if (i != 0) {
+//                    userid = userModelList.get(i).getId();
+//                } else {
+//                    userid = 0;
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
         binding.llBack.setOnClickListener(view -> {
             finish();
         });
@@ -127,12 +175,23 @@ public class AddDeletePremissionActivity extends AppCompatActivity implements Ad
 
     @Override
     public void onSuccess() {
+
+        Toast.makeText(this, getResources().getString(R.string.suc), Toast.LENGTH_LONG).show();
         finish();
     }
 
     @Override
     public void onprofileload(UserModel body) {
         this.body = body;
+    }
+
+    @Override
+    public void onSuccessUsers(UserDataModel body) {
+        userModelList.clear();
+        userModelList.add(new UserModel(getResources().getString(R.string.ch_account)));
+        userModelList.addAll(body.getData());
+        spinnerUserAdapter = new SpinnerUserAdapter(userModelList, this);
+        binding.spUsers.setAdapter(spinnerUserAdapter);
     }
 
     @Override

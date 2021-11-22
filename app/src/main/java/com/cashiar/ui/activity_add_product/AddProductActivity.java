@@ -273,7 +273,7 @@ public class AddProductActivity extends AppCompatActivity implements AddproductA
         addPRoductModel.setSellBy(singleProductModel.getProduct_type());
         addPRoductModel.setStock(singleProductModel.getStock_type());
         Log.e("ellekek",singleProductModel.getSku()+"");
-        addPRoductModel.setStokamount(singleProductModel.getStock_amount()+"");
+        addPRoductModel.setStokamount(singleProductModel.getwarehouse_stock()+"");
         if (singleProductModel.getSku() != null) {
             addPRoductModel.setSku(singleProductModel.getSku());
         }

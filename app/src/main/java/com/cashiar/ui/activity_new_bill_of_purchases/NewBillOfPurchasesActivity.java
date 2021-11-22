@@ -408,7 +408,7 @@ Log.e("sizess",allProductsModel.getData().size()+"");
                 itemCartModel.setProduct_id(singleProductModel.getId());
                 itemCartModel.setTitle(singleProductModel.getTitle());
                 itemCartModel.setType(singleProductModel.getProduct_type());
-                itemCartModel.setStock(singleProductModel.getStock_amount());
+                itemCartModel.setStock(singleProductModel.getwarehouse_stock());
 
                 singleProductModelList.add(itemCartModel);
 
@@ -621,7 +621,7 @@ Log.e("sizess",allProductsModel.getData().size()+"");
     @Override
     public void onSuccess(StockDataModel model) {
 
-        Log.e("dlldldl", model.getData().size() + "");
+      //  Log.e("dlldldl", model.getData().size() + "");
         stockModelList.addAll(model.getData());
         spinnerStockAdapter = new SpinnerStockAdapter(stockModelList, this);
         binding.spStock.setAdapter(spinnerStockAdapter);

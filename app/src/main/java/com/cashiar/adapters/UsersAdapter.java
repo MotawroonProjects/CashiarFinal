@@ -12,19 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cashiar.R;
 import com.cashiar.databinding.CustomerRowBinding;
+import com.cashiar.databinding.UserRowBinding;
 import com.cashiar.models.SingleCustomerSuplliersModel;
+import com.cashiar.models.UserModel;
 import com.cashiar.ui.activity_customers.CustomersActivity;
 import com.cashiar.ui.activity_premission_stock.PremissionStockActivity;
 import com.cashiar.ui.activity_suppliers.SuppliersActivity;
 
 import java.util.List;
 
-public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.CustomerViewholder> {
+public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.CustomerViewholder> {
 
-    private List<SingleCustomerSuplliersModel> list;
+    private List<UserModel> list;
     private Context context;
 
-    public CustomerAdapter(Context context, List<SingleCustomerSuplliersModel> list) {
+    public UsersAdapter(Context context, List<UserModel> list) {
         this.list = list;
         this.context = context;
     }
@@ -32,22 +34,28 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
     @NonNull
     @Override
     public CustomerViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        CustomerRowBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.customer_row, parent, false);
+        UserRowBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.user_row, parent, false);
         return new CustomerViewholder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustomerViewholder holder, @SuppressLint("RecyclerView") int position) {
         holder.binding.setModel(list.get(position));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.binding.imageAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (context instanceof CustomersActivity) {
-                    CustomersActivity customersActivity = (CustomersActivity) context;
-                    customersActivity.update(list.get(position));
-                } else if (context instanceof SuppliersActivity) {
-                    SuppliersActivity customersActivity = (SuppliersActivity) context;
-                    customersActivity.update(list.get(position));
+             if (context instanceof PremissionStockActivity) {
+                    PremissionStockActivity premissionStockActivity = (PremissionStockActivity) context;
+                    premissionStockActivity.onitemselect(list.get(position),"add");
+                }
+            }
+        });
+        holder.binding.imageDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (context instanceof PremissionStockActivity) {
+                    PremissionStockActivity premissionStockActivity = (PremissionStockActivity) context;
+                    premissionStockActivity.onitemselect(list.get(position),"delete");
                 }
             }
         });
@@ -60,9 +68,9 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
 
 
     public class CustomerViewholder extends RecyclerView.ViewHolder {
-        CustomerRowBinding binding;
+        UserRowBinding binding;
 
-        public CustomerViewholder(@NonNull CustomerRowBinding binding) {
+        public CustomerViewholder(@NonNull UserRowBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

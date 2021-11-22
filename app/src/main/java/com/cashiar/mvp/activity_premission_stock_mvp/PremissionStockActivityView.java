@@ -2,6 +2,7 @@ package com.cashiar.mvp.activity_customers_mvp;
 
 import com.cashiar.models.AllCustomersModel;
 import com.cashiar.models.Slider_Model;
+import com.cashiar.models.UserDataModel;
 import com.cashiar.models.UserModel;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public interface PremissionStockActivityView {
     void onProgressShow();
     void onProgressHide();
     void onFailed(String msg);
-    void onSuccess(AllCustomersModel allCategoryModel);
+    void onSuccess(UserDataModel userDataModel);
     void onProgressSliderShow();
     void onProgressSliderHide();
     void onSliderSuccess(List<Slider_Model.Data> sliderModelList);

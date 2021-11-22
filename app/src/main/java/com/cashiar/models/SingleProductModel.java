@@ -13,7 +13,7 @@ public class SingleProductModel implements Serializable {
     private String barcode_code;
     private String barcode_image;
     private String stock_type;
-    private double stock_amount;
+    private double warehouse_stock;
     private String display_logo_type;
     private String image;
     private int color_id;
@@ -58,8 +58,8 @@ public class SingleProductModel implements Serializable {
         return stock_type;
     }
 
-    public double getStock_amount() {
-        return stock_amount;
+    public double getwarehouse_stock() {
+        return warehouse_stock;
     }
 
     public String getDisplay_logo_type() {
@@ -90,8 +90,8 @@ public class SingleProductModel implements Serializable {
         return single_category;
     }
 
-    public void setStock_amount(double stock_amount) {
-        this.stock_amount = stock_amount;
+    public void setwarehouse_stock(double warehouse_stock) {
+        this.warehouse_stock = warehouse_stock;
     }
 }
 

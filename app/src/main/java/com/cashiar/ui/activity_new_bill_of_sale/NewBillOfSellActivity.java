@@ -430,7 +430,7 @@ public class NewBillOfSellActivity extends AppCompatActivity implements NewSellO
                 itemCartModel.setProduct_id(singleProductModel.getId());
                 itemCartModel.setTitle(singleProductModel.getTitle());
                 itemCartModel.setType(singleProductModel.getProduct_type());
-                itemCartModel.setStock(singleProductModel.getStock_amount());
+                itemCartModel.setStock(singleProductModel.getwarehouse_stock());
 
                 singleProductModelList.add(itemCartModel);
 

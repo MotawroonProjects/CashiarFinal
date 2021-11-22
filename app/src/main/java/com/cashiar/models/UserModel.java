@@ -36,6 +36,10 @@ public class UserModel implements Serializable {
     private String package_finished_at;
     private List<Permissions> permissions;
 
+    public UserModel(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }

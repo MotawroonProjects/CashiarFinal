@@ -64,22 +64,17 @@
         <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/CashiarFinal/app/src/main/res/layout/category_row.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/CashiarFinal/app/src/main/res/layout/stock_row.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/CashiarFinal/app/src/main/res/layout/store_balance_row.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/CashiarFinal/app/src/main/res/layout/activity_a_new_bill_of_purchases.xml" value="0.104296875" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/CashiarFinal/app/src/main/res/layout/activity_add_delete_premission.xml" value="0.15" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/CashiarFinal/app/src/main/res/layout/customer_row.xml" value="0.104296875" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/CashiarFinal/app/src/main/res/layout/spinner_users_row.xml" value="0.104296875" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/CashiarFinal/app/src/main/res/layout/user_row.xml" value="0.12" />
         <entry key="..\:/android/Projects/Cashiar2/app/src/main/res/layout/activity_a_new_bill_of_sale.xml" value="0.19814814814814816" />
         <entry key="..\:/android/Projects/Cashiar2/app/src/main/res/layout/activity_all_bill_buy.xml" value="0.1" />
         <entry key="..\:/android/Projects/Cashiar2/app/src/main/res/layout/activity_bill_sell.xml" value="0.19814814814814816" />
         <entry key="..\:/android/Projects/Cashiar2/app/src/main/res/layout/activity_cart_bill_sell.xml" value="0.19814814814814816" />
         <entry key="..\:/android/Projects/Cashiar2/app/src/main/res/layout/activity_products_bill_sell.xml" value="0.20416666666666666" />
         <entry key="..\:/android/Projects/Cashiar2/app/src/main/res/layout/product_bill_row.xml" value="0.20416666666666666" />
-        <entry key="..\:/android/Projects/CashiarFinal/app/src/main/res/layout/activity_add_cashier.xml" value="0.20102564102564102" />
-        <entry key="..\:/android/Projects/CashiarFinal/app/src/main/res/layout/activity_add_customer.xml" value="0.20102564102564102" />
-        <entry key="..\:/android/Projects/CashiarFinal/app/src/main/res/layout/activity_add_delete_premission.xml" value="0.20102564102564102" />
-        <entry key="..\:/android/Projects/CashiarFinal/app/src/main/res/layout/activity_add_department.xml" value="0.20102564102564102" />
-        <entry key="..\:/android/Projects/CashiarFinal/app/src/main/res/layout/activity_all_bill_buy.xml" value="0.20102564102564102" />
-        <entry key="..\:/android/Projects/CashiarFinal/app/src/main/res/layout/activity_home.xml" value="0.19814814814814816" />
-        <entry key="..\:/android/Projects/CashiarFinal/app/src/main/res/layout/activity_premission_stock.xml" value="0.20416666666666666" />
-        <entry key="..\:/android/Projects/CashiarFinal/app/src/main/res/layout/activity_suppliers.xml" value="0.20102564102564102" />
-        <entry key="..\:/android/Projects/CashiarFinal/app/src/main/res/layout/permission_row.xml" value="0.20416666666666666" />
-        <entry key="..\:/android/Projects/CashiarFinal/app/src/main/res/layout/stock_permission_row.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

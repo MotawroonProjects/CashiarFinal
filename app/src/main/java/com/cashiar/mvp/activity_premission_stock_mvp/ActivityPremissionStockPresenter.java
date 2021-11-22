@@ -4,8 +4,9 @@ import android.content.Context;
 import android.util.Log;
 
 import com.cashiar.R;
-import com.cashiar.models.AllCustomersModel;
+import com.cashiar.models.UserDataModel;
 import com.cashiar.models.Slider_Model;
+import com.cashiar.models.UserDataModel;
 import com.cashiar.models.UserModel;
 import com.cashiar.mvp.activity_customers_mvp.PremissionStockActivityView;
 import com.cashiar.preferences.Preferences;
@@ -37,16 +38,16 @@ public class ActivityPremissionStockPresenter {
 
     }
 
-    public void getCustomers(UserModel userModel,String Query)
+    public void getUsers(UserModel userModel)
     {
         // Log.e("tjtjtj",userModel.getIs_confirmed());
         view.onProgressShow();
 
         Api.getService(Tags.base_url)
-                .getCustomer("Bearer "+userModel.getToken(),Query)
-                .enqueue(new Callback<AllCustomersModel>() {
+                .getUSers("Bearer "+userModel.getToken())
+                .enqueue(new Callback<UserDataModel>() {
                     @Override
-                    public void onResponse(Call<AllCustomersModel> call, Response<AllCustomersModel> response) {
+                    public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                         view.onProgressHide();
                         if (response.isSuccessful() && response.body() != null) {
                             view.onSuccess(response.body());
@@ -64,7 +65,7 @@ public class ActivityPremissionStockPresenter {
                     }
 
                     @Override
-                    public void onFailure(Call<AllCustomersModel> call, Throwable t) {
+                    public void onFailure(Call<UserDataModel> call, Throwable t) {
                         try {
                             view.onProgressHide();
                             view.onFailed(context.getString(R.string.something));

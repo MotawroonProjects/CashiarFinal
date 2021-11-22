@@ -137,7 +137,7 @@ public class FireBaseMessaging extends FirebaseMessagingService {
             builder.setContentTitle(title);
             builder.setContentText(Jsoup.parse(body).text());
             builder.setStyle(new NotificationCompat.BigTextStyle().bigText(Jsoup.parse(body).text()));
-UserModel userModel=new UserModel();
+UserModel userModel=new UserModel("");
 
             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
            EventBus.getDefault().post(userModel);
@@ -223,7 +223,7 @@ UserModel userModel=new UserModel();
             builder.setContentTitle(title);
             builder.setContentText(body);
             builder.setStyle(new NotificationCompat.BigTextStyle().bigText(body));
-            UserModel userModel=new UserModel();
+            UserModel userModel=new UserModel("");
             EventBus.getDefault().post(userModel);
 
             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
