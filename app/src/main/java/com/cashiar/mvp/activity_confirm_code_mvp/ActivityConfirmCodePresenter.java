@@ -48,7 +48,7 @@ public class ActivityConfirmCodePresenter {
         mAuth = FirebaseAuth.getInstance();
         Paper.init(context);
         lang = Paper.book().read("lang", "ar");
-       // sendSmsCode();
+        // sendSmsCode();
         //login();
     }
 
@@ -60,7 +60,7 @@ public class ActivityConfirmCodePresenter {
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                 smsCode = phoneAuthCredential.getSmsCode();
-                ActivityConfirmCodePresenter.this.phoneAuthCredential=phoneAuthCredential;
+                ActivityConfirmCodePresenter.this.phoneAuthCredential = phoneAuthCredential;
                 view.onCodeSent(smsCode);
                 checkValidCode(smsCode);
             }
@@ -116,8 +116,7 @@ public class ActivityConfirmCodePresenter {
                 try {
                     view.onCodeFailed(e.getMessage());
 
-                }catch (Exception ex)
-                {
+                } catch (Exception ex) {
 
                 }
             } else {
@@ -168,13 +167,13 @@ public class ActivityConfirmCodePresenter {
     }
 
     private void login() {
-      view.onLoad();
+        view.onLoad();
         Api.getService(Tags.base_url)
-                .login(phone_code.replace("+","00"), phone)
+                .login(phone_code.replace("+", "00"), phone)
                 .enqueue(new Callback<UserModel>() {
                     @Override
                     public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                       view.onFinishload();
+                        view.onFinishload();
                         if (response.isSuccessful() && response.body() != null) {
                             //  Log.e("eeeeee", response.body().getUser().getName());
                             view.onUserFound(response.body());
@@ -200,16 +199,16 @@ public class ActivityConfirmCodePresenter {
                     @Override
                     public void onFailure(Call<UserModel> call, Throwable t) {
                         try {
-                        view.onFinishload();
+                            view.onFinishload();
                             if (t.getMessage() != null) {
                                 Log.e("msg_category_error", t.getMessage() + "__");
 
                                 if (t.getMessage().toLowerCase().contains("failed to connect") || t.getMessage().toLowerCase().contains("unable to resolve host")) {
-                               view.onnotconnect(t.getMessage().toLowerCase());
-                                  //  Toast.makeText(VerificationCodeActivity.this, getString(R.string.something), Toast.LENGTH_SHORT).show();
+                                    view.onnotconnect(t.getMessage().toLowerCase());
+                                    //  Toast.makeText(VerificationCodeActivity.this, getString(R.string.something), Toast.LENGTH_SHORT).show();
                                 } else {
                                     view.onFailed();
-                                   // Toast.makeText(VerificationCodeActivity.this, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+                                    // Toast.makeText(VerificationCodeActivity.this, getString(R.string.failed), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         } catch (Exception e) {
