@@ -48,6 +48,7 @@ import com.cashiar.ui.activity_products.ProductsActivity;
 import com.cashiar.ui.activity_products_buy.ProductsBuyActivity;
 import com.cashiar.ui.activity_products_sell.ProductsSellActivity;
 import com.cashiar.ui.activity_profile.ProfileActivity;
+import com.cashiar.ui.activity_stock_balance.StockBalanceActivity;
 import com.cashiar.ui.activity_stocks.StocksActivity;
 import com.cashiar.ui.activity_subscription.SubscriptionActivity;
 import com.cashiar.ui.activity_suppliers.SuppliersActivity;
@@ -386,6 +387,16 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView,
             if (persearch != null && persearch.contains(12)) {
                Intent intent = new Intent(this, StocksActivity.class);
                startActivity(intent);
+            } else {
+                Toast.makeText(HomeActivity.this, getResources().getString(R.string.dont_have_permission), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        binding.flStoreStock.setOnClickListener(view -> {
+
+            if (persearch != null && persearch.contains(12)) {
+                Intent intent = new Intent(this, StockBalanceActivity.class);
+                startActivity(intent);
             } else {
                 Toast.makeText(HomeActivity.this, getResources().getString(R.string.dont_have_permission), Toast.LENGTH_LONG).show();
             }

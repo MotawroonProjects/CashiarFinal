@@ -97,7 +97,7 @@
     <string name="all_bill_sell">فواتير البيع</string>
     <string name="products_bill_sell">منتجات فاتورة البيع</string>
     <string name="sales_returns">مرتجع المبيعات</string>
-    <string name="products_bill_buy">منتجات فاتورة الشرائ</string>
+    <string name="products_bill_buy">منتجات فاتورة الشراء</string>
     <string name="returned_purchases">مرتجع المشتريات</string>
     <string name="choose_department">ختر القسم</string>
     <string name="add_cashier">اضافة مستخدم</string>
@@ -255,5 +255,4 @@
     <string name="add">إضافة</string>
     <string name="product">المنتج</string>
     <string name="stock_premission">صلاحيات المخازن</string>
-    <string name="add">add</string>
 </resources>
