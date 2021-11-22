@@ -255,4 +255,6 @@
     <string name="add">إضافة</string>
     <string name="product">المنتج</string>
     <string name="stock_premission">صلاحيات المخازن</string>
+    <string name="alert">تنبية</string>
+    <string name="dismiss">عودة</string>
 </resources>

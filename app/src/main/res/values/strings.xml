@@ -254,4 +254,6 @@
     <string name="product">Product</string>
     <string name="dont_add">You Can,t Add From  More Than One Stock</string>
     <string name="stock_premission">Store permissions</string>
+    <string name="alert">Alert</string>
+    <string name="dismiss">Dismiss</string>
 </resources>

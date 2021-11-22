@@ -15,6 +15,7 @@ import com.cashiar.databinding.CategoryRowBinding;
 import com.cashiar.databinding.StoreBalanceRowBinding;
 import com.cashiar.models.StoreBalanceModel;
 import com.cashiar.ui.activity_categories.CategoriesActivity;
+import com.cashiar.ui.activity_stock_balance.StockBalanceActivity;
 
 import java.util.List;
 
@@ -22,10 +23,12 @@ public class StoreBalanceAdapter extends RecyclerView.Adapter<StoreBalanceAdapte
 
     private List<StoreBalanceModel> list;
     private Context context;
+    private StockBalanceActivity activity;
 
     public StoreBalanceAdapter(Context context, List<StoreBalanceModel> list) {
         this.list = list;
         this.context = context;
+        activity = (StockBalanceActivity) context;
     }
 
     @NonNull
@@ -38,7 +41,11 @@ public class StoreBalanceAdapter extends RecyclerView.Adapter<StoreBalanceAdapte
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.binding.setModel(list.get(position));
-        holder.binding.setPos((position + 1) + "");
+        int pos = position+1;
+        holder.binding.setPos(pos + "");
+        holder.binding.imageEdit.setOnClickListener(v -> {
+            activity.showChooseDialog(holder.getAdapterPosition(),list.get(holder.getAdapterPosition()));
+        });
     }
 
     @Override

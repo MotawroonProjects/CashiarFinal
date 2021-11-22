@@ -27,6 +27,7 @@ import com.cashiar.models.SettingModel;
 import com.cashiar.models.SingleProductDataModel;
 import com.cashiar.models.SingleProductModel;
 import com.cashiar.models.Slider_Model;
+import com.cashiar.models.StoreBalanceDataModel;
 import com.cashiar.models.SubscriptionDataModel;
 import com.cashiar.models.UnpaidBillSaleReportModel;
 import com.cashiar.models.UserDataModel;
@@ -880,6 +881,7 @@ public interface Service {
 
 
     );
+
     @FormUrlEncoded
     @POST("api/removePermissionOfMultiWarehousesToSingleUser")
     Call<ResponseBody> deletePremission(
@@ -889,18 +891,22 @@ public interface Service {
 
 
     );
+
     @GET("api/searchUsers")
     Call<UserDataModel> getUSers(
             @Header("Authorization") String Authorization
 
 
+    );
 
-            );
     @FormUrlEncoded
     @POST("api/getUserWarehouses")
     Call<StockDataModel> getStocks(@Header("Authorization") String Authorization,
                                    @Field("user_id") String user_id
+    );
 
-
-                                   );
+    @POST("api/addWarehouseBalances")
+    Call<ResponseBody> addStoreBalance(@Header("Authorization") String Authorization,
+                                       @Body StoreBalanceDataModel model
+                                       );
 }

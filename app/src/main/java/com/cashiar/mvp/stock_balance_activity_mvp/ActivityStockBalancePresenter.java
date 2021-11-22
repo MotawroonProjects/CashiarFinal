@@ -7,6 +7,7 @@ import android.util.Log;
 import com.cashiar.R;
 import com.cashiar.models.AllProductsModel;
 import com.cashiar.models.StockDataModel;
+import com.cashiar.models.StoreBalanceDataModel;
 import com.cashiar.models.UserModel;
 import com.cashiar.mvp.activity_stocks_mvp.StocksActivityView;
 import com.cashiar.preferences.Preferences;
@@ -78,6 +79,37 @@ public class ActivityStockBalancePresenter {
 
                     @Override
                     public void onFailure(Call<AllProductsModel> call, Throwable t) {
+                        try {
+                            view.onFailed(context.getString(R.string.failed));
+                            Log.e("Error", t.getMessage());
+                        } catch (Exception e) {
+
+                        }
+                    }
+                });
+    }
+
+    public void addData(StoreBalanceDataModel model) {
+        ProgressDialog dialog = Common.createProgressDialog(context, context.getString(R.string.wait));
+        dialog.show();
+
+        Api.getService(Tags.base_url)
+                .addStoreBalance("Bearer " + userModel.getToken(), model)
+                .enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        dialog.dismiss();
+                        if (response.isSuccessful() && response.body() != null) {
+                            view.onAddSuccess();
+                        } else {
+                            view.onFailed(context.getString(R.string.failed));
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
                         try {
                             view.onFailed(context.getString(R.string.failed));
                             Log.e("Error", t.getMessage());
