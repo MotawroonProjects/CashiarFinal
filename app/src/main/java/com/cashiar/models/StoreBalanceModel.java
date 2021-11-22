@@ -1,10 +1,13 @@
 package com.cashiar.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class StoreBalanceModel implements Serializable {
     private String warehouse_id;
     private String product_id;
+    @SerializedName("amount_of_stock")
     private String amount;
     private String store_name;
     private String product_name;
@@ -17,6 +20,7 @@ public class StoreBalanceModel implements Serializable {
         this.store_name = store_name;
         this.product_name = product_name;
     }
+
 
     public String getWarehouse_id() {
         return warehouse_id;

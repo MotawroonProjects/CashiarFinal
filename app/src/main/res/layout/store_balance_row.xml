@@ -78,6 +78,7 @@
             android:background="@color/gray4"
             />
         <ImageView
+            android:id="@+id/imageEdit"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
