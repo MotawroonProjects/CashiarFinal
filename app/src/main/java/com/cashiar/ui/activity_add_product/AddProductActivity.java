@@ -301,13 +301,13 @@ public class AddProductActivity extends AppCompatActivity implements AddproductA
             binding.rdunit.setChecked(false);
             binding.rdweight.setChecked(true);
         }
-        if (singleProductModel.getStock_type().equals("in_stock")) {
-            binding.rdIn.setChecked(true);
-            binding.rdOut.setChecked(false);
-        } else {
-            binding.rdIn.setChecked(false);
-            binding.rdOut.setChecked(true);
-        }
+//        if (singleProductModel.getStock_type().equals("in_stock")) {
+//            binding.rdIn.setChecked(true);
+//            binding.rdOut.setChecked(false);
+//        } else {
+//            binding.rdIn.setChecked(false);
+//            binding.rdOut.setChecked(true);
+//        }
         setselectiondepartment();
         binding.btnConfirm.setText(getResources().getString(R.string.update));
         binding.setModel(addPRoductModel);

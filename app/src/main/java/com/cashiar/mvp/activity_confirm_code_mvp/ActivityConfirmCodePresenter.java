@@ -49,7 +49,7 @@ public class ActivityConfirmCodePresenter {
         Paper.init(context);
         lang = Paper.book().read("lang", "ar");
         // sendSmsCode();
-        //login();
+        login();
     }
 
     public void sendSmsCode() {
