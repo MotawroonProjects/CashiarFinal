@@ -342,11 +342,12 @@ public class ProductsActivity extends AppCompatActivity implements ProductsActiv
         Intent intent = new Intent(ProductsActivity.this, AddProductActivity.class);
         intent.putExtra("data", singleProductModel);
         intent.putExtra("type", "update");
-        startActivity(intent);
+        startActivityForResult(intent,1);
     }
     @Override
     protected void onRestart() {
         super.onRestart();
         presenter.getprofile(userModel);
     }
+
 }

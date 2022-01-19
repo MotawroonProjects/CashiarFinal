@@ -518,6 +518,8 @@ public class AddProductActivity extends AppCompatActivity implements AddproductA
 
     @Override
     public void onSuccess() {
+        Intent intent=getIntent();
+        setResult(RESULT_OK,intent);
         finish();
     }
 
