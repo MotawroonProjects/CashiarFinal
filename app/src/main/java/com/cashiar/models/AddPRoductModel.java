@@ -30,7 +30,9 @@ public class AddPRoductModel extends BaseObservable {
 
     public boolean isDataValid(Context context) {
         if (!name.trim().isEmpty() && !department.trim().isEmpty() && !sellBy.trim().isEmpty() && !price.trim().isEmpty()
-                && !cost.trim().isEmpty() && !stock.trim().isEmpty() && !showinsell.trim().isEmpty()
+                && !cost.trim().isEmpty() &&
+//                !stock.trim().isEmpty()
+                 !showinsell.trim().isEmpty()
                 //&& ((stock.equals("out_stock")) || (stock.equals("in_stock") && !stokamount.trim().isEmpty()))
                 && ((((showinsell.equals("color") && !color.trim().isEmpty()))) || (showinsell.equals("image") && !image_url.trim().isEmpty()))
         ) {
