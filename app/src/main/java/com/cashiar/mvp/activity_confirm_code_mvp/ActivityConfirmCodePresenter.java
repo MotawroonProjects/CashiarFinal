@@ -48,8 +48,8 @@ public class ActivityConfirmCodePresenter {
         mAuth = FirebaseAuth.getInstance();
         Paper.init(context);
         lang = Paper.book().read("lang", "ar");
-        // sendSmsCode();
-        login();
+         sendSmsCode();
+        //login();
     }
 
     public void sendSmsCode() {
