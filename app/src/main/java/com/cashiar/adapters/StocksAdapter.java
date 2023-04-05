@@ -40,10 +40,12 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.binding.setModel(list.get(position));
-        holder.itemView.setOnClickListener(v -> {
+        holder.binding.imageEdit.setOnClickListener(v -> {
             activity.editStock(list.get(holder.getAdapterPosition()));
         });
-
+        holder.itemView.setOnClickListener(v -> {
+            activity.showProducts(list.get(holder.getAdapterPosition()));
+        });
     }
 
     @Override

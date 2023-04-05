@@ -93,5 +93,10 @@ public class SingleProductModel implements Serializable {
     public void setwarehouse_stock(double warehouse_stock) {
         this.warehouse_stock = warehouse_stock;
     }
+
+    public double getWarehouse_stock() {
+        return warehouse_stock;
+    }
 }
+
 

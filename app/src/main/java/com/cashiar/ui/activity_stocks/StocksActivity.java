@@ -38,6 +38,7 @@ import com.cashiar.share.Common;
 import com.cashiar.ui.activity_add_departmnet.AddDepartmnetActivity;
 import com.cashiar.ui.activity_add_stock.AddStockActivity;
 import com.cashiar.ui.activity_categories.CategoriesActivity;
+import com.cashiar.ui.activity_warehouse_product.ProductsWareHouseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -162,5 +163,11 @@ public class StocksActivity extends AppCompatActivity implements StocksActivityV
         Intent intent = new Intent(this,AddStockActivity.class);
         intent.putExtra("data",stockModel);
         startActivityForResult(intent,1);
+    }
+
+    public void showProducts(StockModel stockModel) {
+        Intent intent = new Intent(this, ProductsWareHouseActivity.class);
+        intent.putExtra("data",stockModel);
+        startActivity(intent);
     }
 }
