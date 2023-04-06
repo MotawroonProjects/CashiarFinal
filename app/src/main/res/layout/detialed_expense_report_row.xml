@@ -16,7 +16,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.SingleExpensesModel" />
+            type="com.easycashiar.models.SingleExpensesModel" />
 
         <variable
             name="con"

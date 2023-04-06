@@ -7,7 +7,7 @@ android {
     compileSdkVersion 33
 
     defaultConfig {
-        applicationId "com.cashiar"
+        applicationId "com.easycashiar"
         minSdkVersion 16
         targetSdkVersion 33
         versionCode 1

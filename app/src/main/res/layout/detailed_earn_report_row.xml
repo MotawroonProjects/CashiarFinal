@@ -16,7 +16,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.SalesPurchReportsModel" />
+            type="com.easycashiar.models.SalesPurchReportsModel" />
 
         <variable
             name="con"

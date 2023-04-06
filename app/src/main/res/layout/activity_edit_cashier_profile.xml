@@ -14,7 +14,7 @@
 
         <variable
             name="editModel"
-            type="com.cashiar.models.EditProfileCahierModel" />
+            type="com.easycashiar.models.EditProfileCahierModel" />
 
 
     </data>

@@ -15,7 +15,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.ItemCartModel" />
+            type="com.easycashiar.models.ItemCartModel" />
 
     </data>
 

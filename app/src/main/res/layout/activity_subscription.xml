@@ -10,7 +10,7 @@
 
         <variable
             name="backListener"
-            type="com.cashiar.interfaces.Listeners.BackListener" />
+            type="com.easycashiar.interfaces.Listeners.BackListener" />
 
         <variable
             name="lang"

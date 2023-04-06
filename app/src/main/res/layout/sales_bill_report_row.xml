@@ -16,7 +16,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.SalesBillReportsModel" />
+            type="com.easycashiar.models.SalesBillReportsModel" />
 
         <variable
             name="con"

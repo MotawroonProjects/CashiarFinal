@@ -12,7 +12,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.SinglePermissionModel" />
+            type="com.easycashiar.models.SinglePermissionModel" />
 
     </data>
 

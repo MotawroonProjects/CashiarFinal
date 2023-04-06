@@ -16,7 +16,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.AmountLeftOverReportsModel" />
+            type="com.easycashiar.models.AmountLeftOverReportsModel" />
 
         <variable
             name="con"

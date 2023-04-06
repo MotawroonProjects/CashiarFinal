@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.SubscriptionModel" />
+            type="com.easycashiar.models.SubscriptionModel" />
 
         <variable
             name="lang"

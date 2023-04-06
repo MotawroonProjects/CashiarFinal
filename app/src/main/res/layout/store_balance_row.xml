@@ -7,7 +7,7 @@
             type="String" />
         <variable
             name="model"
-            type="com.cashiar.models.StoreBalanceModel" />
+            type="com.easycashiar.models.StoreBalanceModel" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"

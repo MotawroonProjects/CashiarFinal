@@ -12,7 +12,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.SingleCustomerSuplliersModel" />
+            type="com.easycashiar.models.SingleCustomerSuplliersModel" />
 
     </data>
 

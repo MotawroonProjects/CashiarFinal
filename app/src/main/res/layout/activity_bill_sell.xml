@@ -14,7 +14,7 @@
 <import type="android.view.View"/>
         <variable
             name="billmodel"
-            type="com.cashiar.models.BillModel" />
+            type="com.easycashiar.models.BillModel" />
 
         <variable
             name="tax"
@@ -30,7 +30,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.CreateOrderModel" />
+            type="com.easycashiar.models.CreateOrderModel" />
 
         <variable
             name="total"

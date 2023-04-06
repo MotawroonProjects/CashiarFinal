@@ -10,7 +10,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.AddAccountModel" />
+            type="com.easycashiar.models.AddAccountModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

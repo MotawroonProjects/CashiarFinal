@@ -14,7 +14,7 @@
     type="String" />
         <variable
             name="model"
-            type="com.cashiar.models.SingleDiscountModel" />
+            type="com.easycashiar.models.SingleDiscountModel" />
 
     </data>
 

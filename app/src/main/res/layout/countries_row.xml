@@ -6,7 +6,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.CountryModel" />
+            type="com.easycashiar.models.CountryModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

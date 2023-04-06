@@ -9,7 +9,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.AddPRoductModel" />
+            type="com.easycashiar.models.AddPRoductModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

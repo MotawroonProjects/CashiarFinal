@@ -11,7 +11,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.AddCashierModel" />
+            type="com.easycashiar.models.AddCashierModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

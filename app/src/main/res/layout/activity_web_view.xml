@@ -7,7 +7,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.activity_web_view.WebViewActivity"
+        tools:context="com.easycashiar.ui.activity_web_view.WebViewActivity"
 
         >
         <WebView

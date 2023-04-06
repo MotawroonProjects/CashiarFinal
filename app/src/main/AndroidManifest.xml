@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.cashiar">
+    package="com.easycashiar">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
-        android:name=".share.App"
+        android:name="com.easycashiar.share.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -26,231 +26,231 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
         <activity
-            android:name=".ui.activity_stock_balance.StockBalanceActivity"
+            android:name="com.easycashiar.ui.activity_stock_balance.StockBalanceActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.activity_stocks.StocksActivity"
+            android:name="com.easycashiar.ui.activity_stocks.StocksActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.activity_add_stock.AddStockActivity"
+            android:name="com.easycashiar.ui.activity_add_stock.AddStockActivity"
             android:exported="true" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
         <activity
-            android:name=".ui.activity_add_delete_premission.AddDeletePremissionActivity"
+            android:name="com.easycashiar.ui.activity_add_delete_premission.AddDeletePremissionActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:exported="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_premission_stock.PremissionStockActivity"
+            android:name="com.easycashiar.ui.activity_premission_stock.PremissionStockActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:exported="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_web_view.WebViewActivity"
+            android:name="com.easycashiar.ui.activity_web_view.WebViewActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_unpaid_bill_Sell.UnPaidBillSellActivity"
+            android:name="com.easycashiar.ui.activity_unpaid_bill_Sell.UnPaidBillSellActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_subscription.SubscriptionActivity"
+            android:name="com.easycashiar.ui.activity_subscription.SubscriptionActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_new_bill_of_purchases.NewBillOfPurchasesActivity"
+            android:name="com.easycashiar.ui.activity_new_bill_of_purchases.NewBillOfPurchasesActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_new_bill_of_sale.NewBillOfSellActivity"
+            android:name="com.easycashiar.ui.activity_new_bill_of_sale.NewBillOfSellActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_aggerate_expenses_report.AggerateExpenseReportActivity"
+            android:name="com.easycashiar.ui.activity_aggerate_expenses_report.AggerateExpenseReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_store_inventory_report.StoreInventoryReportActivity"
+            android:name="com.easycashiar.ui.activity_store_inventory_report.StoreInventoryReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_detailed_expenses_report.DetailedExpenseReportActivity"
+            android:name="com.easycashiar.ui.activity_detailed_expenses_report.DetailedExpenseReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_detailed_purchases_report.DetailedPurchasesReportActivity"
+            android:name="com.easycashiar.ui.activity_detailed_purchases_report.DetailedPurchasesReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_inventory_change_purchases_price_for_an_item_report.InventoryChangePurchasesPriceForanItemReportActivity"
+            android:name="com.easycashiar.ui.activity_inventory_change_purchases_price_for_an_item_report.InventoryChangePurchasesPriceForanItemReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_aggerate_purchases_report.AggreatePurchasesReportActivity"
+            android:name="com.easycashiar.ui.activity_aggerate_purchases_report.AggreatePurchasesReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_report_of_unpaid_purchases_invoices.UnpaidPurchasesInvoicesReportActivity"
+            android:name="com.easycashiar.ui.activity_report_of_unpaid_purchases_invoices.UnpaidPurchasesInvoicesReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activty_report_of_purchases_bill.BillPurchasesReportActivity"
+            android:name="com.easycashiar.ui.activty_report_of_purchases_bill.BillPurchasesReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_product_purchases_supplier_report.ProductPurchasesSupplierReportActivity"
+            android:name="com.easycashiar.ui.activity_product_purchases_supplier_report.ProductPurchasesSupplierReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_bill_supplier.BillSupplierReportActivity"
+            android:name="com.easycashiar.ui.activity_bill_supplier.BillSupplierReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_amount_left_over_supplier.AmountLeftOverSupplierReportActivity"
+            android:name="com.easycashiar.ui.activity_amount_left_over_supplier.AmountLeftOverSupplierReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_bill_customer.BillCustomerReportActivity"
+            android:name="com.easycashiar.ui.activity_bill_customer.BillCustomerReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_product_sold_customer_report.ProductSoldCustomerReportActivity"
+            android:name="com.easycashiar.ui.activity_product_sold_customer_report.ProductSoldCustomerReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activty_aggreate_earn_report.AggreateEarnReportActivity"
+            android:name="com.easycashiar.ui.activty_aggreate_earn_report.AggreateEarnReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_amount_left_over_customer.AmountLeftOverCustomerCustomerReportActivity"
+            android:name="com.easycashiar.ui.activity_amount_left_over_customer.AmountLeftOverCustomerCustomerReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_product_profit_rate_report.ProductProfitReateReportActivity"
+            android:name="com.easycashiar.ui.activity_product_profit_rate_report.ProductProfitReateReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_earn_detailed_report.DetailedEarnReportActivity"
+            android:name="com.easycashiar.ui.activity_earn_detailed_report.DetailedEarnReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activty_report_of_sales_bill.BillSalesReportActivity"
+            android:name="com.easycashiar.ui.activty_report_of_sales_bill.BillSalesReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_report_of_unpaid_sales_invoices.UnpaidSalesInvoicesReportActivity"
+            android:name="com.easycashiar.ui.activity_report_of_unpaid_sales_invoices.UnpaidSalesInvoicesReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_aggerate_sales_report.AggreateSalesReportActivity"
+            android:name="com.easycashiar.ui.activity_aggerate_sales_report.AggreateSalesReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_detailed_sales_report.DetailedSalesReportActivity"
+            android:name="com.easycashiar.ui.activity_detailed_sales_report.DetailedSalesReportActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_add_subliers.AddSubliersActivity"
+            android:name="com.easycashiar.ui.activity_add_subliers.AddSubliersActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_bill_Sell.BillSellActivity"
+            android:name="com.easycashiar.ui.activity_bill_Sell.BillSellActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_welcome.WelcomeActivity"
+            android:name="com.easycashiar.ui.activity_welcome.WelcomeActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_cart_buy.CartBuyActivity"
+            android:name="com.easycashiar.ui.activity_cart_buy.CartBuyActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_pay_buy.PaymentBuyActivity"
+            android:name="com.easycashiar.ui.activity_pay_buy.PaymentBuyActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_products_buy.ProductsBuyActivity"
+            android:name="com.easycashiar.ui.activity_products_buy.ProductsBuyActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_suppliers.SuppliersActivity"
+            android:name="com.easycashiar.ui.activity_suppliers.SuppliersActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_customers.CustomersActivity"
+            android:name="com.easycashiar.ui.activity_customers.CustomersActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_add_Customer.AddCustomerActivity"
+            android:name="com.easycashiar.ui.activity_add_Customer.AddCustomerActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_login.LoginActivity"
+            android:name="com.easycashiar.ui.activity_login.LoginActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_confirm_code.ConfirmCodeActivity"
+            android:name="com.easycashiar.ui.activity_confirm_code.ConfirmCodeActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_cart_sell.CartSellActivity"
+            android:name="com.easycashiar.ui.activity_cart_sell.CartSellActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_pay_sell.PaymentSellActivity"
+            android:name="com.easycashiar.ui.activity_pay_sell.PaymentSellActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_sign_up.SignUpActivity"
+            android:name="com.easycashiar.ui.activity_sign_up.SignUpActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <service
-            android:name=".notification.FireBaseMessaging"
+            android:name="com.easycashiar.notification.FireBaseMessaging"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -258,146 +258,146 @@
         </service>
 
         <activity
-            android:name=".ui.activity_add_discount.AddDiscountActivity"
+            android:name="com.easycashiar.ui.activity_add_discount.AddDiscountActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_disacount.DiscountActivity"
+            android:name="com.easycashiar.ui.activity_disacount.DiscountActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_departments.DepartmentActivity"
+            android:name="com.easycashiar.ui.activity_departments.DepartmentActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_categories.CategoriesActivity"
+            android:name="com.easycashiar.ui.activity_categories.CategoriesActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_add_departmnet.AddDepartmnetActivity"
+            android:name="com.easycashiar.ui.activity_add_departmnet.AddDepartmnetActivity"
             android:exported="true"
            android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_edit_profile.EditprofileActivity"
+            android:name="com.easycashiar.ui.activity_edit_profile.EditprofileActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_edit_cashier_profile.EditprofileCashierActivity"
+            android:name="com.easycashiar.ui.activity_edit_cashier_profile.EditprofileCashierActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_products_sell.ProductsSellActivity"
+            android:name="com.easycashiar.ui.activity_products_sell.ProductsSellActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_add_product.AddProductActivity"
+            android:name="com.easycashiar.ui.activity_add_product.AddProductActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.scanner.ActivityScanner"
+            android:name="com.easycashiar.ui.scanner.ActivityScanner"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_products.ProductsActivity"
+            android:name="com.easycashiar.ui.activity_products.ProductsActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_expenses.ExpensesActivity"
+            android:name="com.easycashiar.ui.activity_expenses.ExpensesActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_add_expenses.AddExpensesActivity"
+            android:name="com.easycashiar.ui.activity_add_expenses.AddExpensesActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.Activity_add_accout.AddAccountActivity"
+            android:name="com.easycashiar.ui.Activity_add_accout.AddAccountActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_home.HomeActivity"
+            android:name="com.easycashiar.ui.activity_home.HomeActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.Activity_products_bill_sell.ProductsBillSellActivity"
+            android:name="com.easycashiar.ui.Activity_products_bill_sell.ProductsBillSellActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_cart_bill_sell.CartBillSellActivity"
+            android:name="com.easycashiar.ui.activity_cart_bill_sell.CartBillSellActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_all_bill_sell.AllBillSellActivity"
+            android:name="com.easycashiar.ui.activity_all_bill_sell.AllBillSellActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_cart_bill_buy.CartBillBuyActivity"
+            android:name="com.easycashiar.ui.activity_cart_bill_buy.CartBillBuyActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_products_bill_buy.ProductsBillBuyActivity"
+            android:name="com.easycashiar.ui.activity_products_bill_buy.ProductsBillBuyActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_profile.ProfileActivity"
+            android:name="com.easycashiar.ui.activity_profile.ProfileActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_all_bill_buy.AllBillBuyActivity"
+            android:name="com.easycashiar.ui.activity_all_bill_buy.AllBillBuyActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_payment_bill_buy.PaymentBillBuyActivity"
+            android:name="com.easycashiar.ui.activity_payment_bill_buy.PaymentBillBuyActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_payment_bill_Sell.PaymentBillSellActivity"
+            android:name="com.easycashiar.ui.activity_payment_bill_Sell.PaymentBillSellActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_warehouse_product.ProductsWareHouseActivity"
+            android:name="com.easycashiar.ui.activity_warehouse_product.ProductsWareHouseActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activityacountmangment.AccountMangmentActivity"
+            android:name="com.easycashiar.ui.activityacountmangment.AccountMangmentActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_add_cashier.AddCashierActivity"
+            android:name="com.easycashiar.ui.activity_add_cashier.AddCashierActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.activity_contactus.ContactusActivity"
+            android:name="com.easycashiar.ui.activity_contactus.ContactusActivity"
             android:exported="true"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".ui.activity_splash.SplashActivity"
+        <activity android:name="com.easycashiar.ui.activity_splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

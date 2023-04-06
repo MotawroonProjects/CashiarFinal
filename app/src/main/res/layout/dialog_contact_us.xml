@@ -3,7 +3,7 @@
     <data>
         <variable
             name="contactlistener"
-            type="com.cashiar.interfaces.Listeners.ContactActions" />
+            type="com.easycashiar.interfaces.Listeners.ContactActions" />
 
         <variable
             name="lang"
@@ -11,7 +11,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.SettingModel" />
+            type="com.easycashiar.models.SettingModel" />
 
         <import type="android.view.View" />
     </data>

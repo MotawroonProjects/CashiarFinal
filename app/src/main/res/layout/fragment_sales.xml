@@ -13,7 +13,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.SettingModel" />
+            type="com.easycashiar.models.SettingModel" />
     </data>
 
     <LinearLayout

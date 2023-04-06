@@ -15,7 +15,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.PaymentModel" />
+            type="com.easycashiar.models.PaymentModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

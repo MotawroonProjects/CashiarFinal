@@ -14,7 +14,7 @@
     type="String" />
         <variable
             name="model"
-            type="com.cashiar.models.SingleBillOfSellModel" />
+            type="com.easycashiar.models.SingleBillOfSellModel" />
 
     </data>
 

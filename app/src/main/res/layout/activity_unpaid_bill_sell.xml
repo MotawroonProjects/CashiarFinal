@@ -16,7 +16,7 @@
 
         <variable
             name="billmodel"
-            type="com.cashiar.models.BillModel" />
+            type="com.easycashiar.models.BillModel" />
 
         <variable
             name="total"

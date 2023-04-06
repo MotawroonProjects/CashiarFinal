@@ -6,7 +6,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.SignUpModel" />
+            type="com.easycashiar.models.SignUpModel" />
 
     </data>
 

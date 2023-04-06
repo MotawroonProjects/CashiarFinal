@@ -8,6 +8,59 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:64938449745:android:8e9bbc8d6898e1322a1170",
+        "android_client_info": {
+          "package_name": "com.app.cashiar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "64938449745-cnjh5fdgf4sg6fi06t8vq1ofps4dauhr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.cashiar",
+            "certificate_hash": "66173c2a74997aeb17bf402f45956380e548c7ae"
+          }
+        },
+        {
+          "client_id": "64938449745-gd78d1ap53umrb7karrksjggclvntd84.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.cashiar",
+            "certificate_hash": "6d39e57f3c880ad5ec12fe731d3e4a908fca8758"
+          }
+        },
+        {
+          "client_id": "64938449745-jvkkk5f48sqphjjh07pove6ob5393v81.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.cashiar",
+            "certificate_hash": "d973128355e290a4d86f2ed6bec7aaf5765bdc6b"
+          }
+        },
+        {
+          "client_id": "64938449745-tupn33hapnr1foon90mcd23de74bu344.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXURwDwsxKttol-mQec6R47wgiRRKCKG4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "64938449745-tupn33hapnr1foon90mcd23de74bu344.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:64938449745:android:770be4732b41a3d32a1170",
         "android_client_info": {
           "package_name": "com.cashiar"
@@ -15,11 +68,64 @@
       },
       "oauth_client": [
         {
-          "client_id": "64938449745-8uma1pkorv3a2f2orm5joai5o86gr82v.apps.googleusercontent.com",
+          "client_id": "64938449745-e7clrl7ivl5vb47oi9opthc8ov51v2tc.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.cashiar",
-            "certificate_hash": "307ae9a68d2eec407c16fda7887f0bcd02f4671e"
+            "certificate_hash": "7fa5008f45b5f22b39d092bd19f2afb505f7870f"
+          }
+        },
+        {
+          "client_id": "64938449745-otp8jrkvopu3p23jpkgtr85tvds0oqht.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cashiar",
+            "certificate_hash": "3fa9a7bfc8fc9ddc1ce24e70a51ab34127862e5b"
+          }
+        },
+        {
+          "client_id": "64938449745-s3mvvgm78h7t5jh0gip7qtosd8el6264.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cashiar",
+            "certificate_hash": "6d39e57f3c880ad5ec12fe731d3e4a908fca8758"
+          }
+        },
+        {
+          "client_id": "64938449745-tupn33hapnr1foon90mcd23de74bu344.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXURwDwsxKttol-mQec6R47wgiRRKCKG4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "64938449745-tupn33hapnr1foon90mcd23de74bu344.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64938449745:android:fbb0d6cdc86523ca2a1170",
+        "android_client_info": {
+          "package_name": "com.easycashiar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "64938449745-866jbc06se1nes41242euk3l47a7i3qk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.easycashiar",
+            "certificate_hash": "6d39e57f3c880ad5ec12fe731d3e4a908fca8758"
           }
         },
         {

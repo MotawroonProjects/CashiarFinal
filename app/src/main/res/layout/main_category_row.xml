@@ -6,7 +6,7 @@
 
         <variable
             name="model"
-            type="com.cashiar.models.SingleCategoryModel" />
+            type="com.easycashiar.models.SingleCategoryModel" />
 
     </data>
 
